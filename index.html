@@ -268,16 +268,22 @@ footer {
 <section id="enquiry">
     <h2 data-aos="fade-down"><i class="fas fa-paper-plane"></i> Quick Enquiry</h2>
     <div class="form-container" data-aos="zoom-in">
-        <p style="text-align: center; color: #aaa;">Tell us about your project idea or question.</p>
-        <form onsubmit="alert('Thank you for your enquiry! We will contact you soon.'); return false;">
+        <p style="text-align: center; color: #aaa;">Tell us about your project idea or question. (Data sent to projectkart2@gmail.com)</p>
+        
+        <form action="https://formsubmit.co/projectkart2@gmail.com" method="POST">
+            
+            <input type="hidden" name="_honeypot" value="">
+            
+            <input type="hidden" name="_subject" value="New ProjectKart Website Enquiry!">
+
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="Name" required>
             
             <label for="email">Email / Phone:</label>
-            <input type="text" id="email" name="email" required>
+            <input type="text" id="email" name="Email/Phone" required>
             
             <label for="project">Your Project Idea / Question:</label>
-            <textarea id="project" name="project" rows="4" required></textarea>
+            <textarea id="project" name="Project_Details" rows="4" required></textarea>
             
             <button type="submit">Send Enquiry <i class="fas fa-share-square"></i></button>
         </form>
