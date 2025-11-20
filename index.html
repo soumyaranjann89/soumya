@@ -44,6 +44,7 @@ header h2 {
     color: var(--primary); text-shadow: 0 0 12px var(--primary);
     font-size: 24px;
 }
+/* *** LOGO STYLE: logo.png will be displayed with this style *** */
 .logo { height: 45px; filter: drop-shadow(0 0 10px var(--primary)); }
 
 .nav-links a {
@@ -103,7 +104,7 @@ h3 { color: var(--neon); margin-top: 0; font-weight: 600; }
 .card::before {
     content: ""; position: absolute;
     width: 120%; height: 120%; top: -30%; left: -30%;
-    /* Replace with a path to a subtle texture image, e.g., a circuit board pattern */
+    /* Subtle texture image */
     background: url('https://i.imgur.com/ZJjZ6fK.png');
     background-size: cover; opacity: 0.08; transform: rotate(25deg);
 }
@@ -156,7 +157,7 @@ footer {
 
 <header>
     <h2>
-        <img src="https://i.imgur.com/g88R19G.png" class="logo" alt="ProjectKart Logo">
+        <img src="logo.png" class="logo" alt="ProjectKart Logo">
         ProjectKart
     </h2>
     <nav class="nav-links">
