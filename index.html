@@ -3,11 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+<title>ProjectKart - Innovative Electronics & IoT Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
-body { font-family: 'Poppins', sans-serif; margin: 0; background: #0a0f24; color: #dfe6f0; overflow-x: hidden; }
+/* --- 1. Global & Variables --- */
+:root {
+    --primary: #00eaff;
+    --neon: #00fff2;
+    --background-dark: #0a0f24;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --border-color: rgba(0, 255, 255, 0.2);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: var(--background-dark);
+    color: #dfe6f0;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
 
 /* Grid background effect */
 body::before {
@@ -16,93 +32,245 @@ body::before {
     top: 0; left: 0;
     width: 100%; height: 100%;
     background-image:
-    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 10s linear infinite;
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 15s linear infinite;
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.5;
 }
-@keyframes gridMove { from { background-position: 0 0; } to { background-position: 100px 100px; } }
+@keyframes gridMove { from { background-position: 0 0; } to { background-position: 80px 80px; } }
 
-:root { --primary: #00eaff; --neon: #00fff2; }
-
+/* --- 2. Header & Navigation --- */
 header {
-    background: rgba(10,20,50,0.6);
-    padding: 20px 40px;
+    background: rgba(10, 20, 50, 0.8);
+    padding: 15px 40px;
     display: flex; justify-content: space-between; align-items: center;
-    border-bottom: 1px solid rgba(0,255,255,0.2);
-    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(12px);
     position: sticky; top: 0; z-index: 999;
 }
 header h2 {
     display: flex; align-items: center; gap: 10px;
-    color: var(--primary); text-shadow: 0 0 12px var(--primary);
+    color: var(--primary); font-size: 28px;
+    text-shadow: 0 0 15px var(--neon);
 }
-.logo { height: 45px; filter: drop-shadow(0 0 10px var(--primary)); }
+.logo { height: 40px; filter: drop-shadow(0 0 10px var(--primary)); }
 
 .nav-links a {
-    margin: 0 18px; color: #dfe6f0; text-decoration: none;
-    font-weight: 600; transition: 0.3s;
+    margin: 0 15px; color: #dfe6f0; text-decoration: none;
+    font-weight: 500; transition: 0.3s;
+    letter-spacing: 0.5px;
+    padding: 5px 0;
 }
 .nav-links a:hover {
-    color: var(--primary); text-shadow: 0 0 8px var(--neon);
-    transform: scale(1.1);
+    color: var(--neon); text-shadow: 0 0 6px var(--neon);
+    border-bottom: 2px solid var(--primary);
 }
 
+/* --- 3. Hero Section --- */
 .hero {
-    text-align: center; padding: 120px 20px; color: white;
-    background: radial-gradient(circle at top, #0e1838, #050811);
-}
-.hero h1 {
-    font-size: 52px; font-weight: 700;
-    text-shadow: 0 0 15px var(--primary);
-}
-button {
-    padding: 14px 35px; border: 2px solid var(--primary);
-    background: transparent; color: var(--primary);
-    border-radius: 10px; cursor: pointer; font-size: 18px;
-    transition: 0.3s; margin-top: 25px;
-}
-button:hover { background: var(--primary); color: black; transform: scale(1.1); }
+    text-align: center;
+    padding: 140px 20px 100px;
+    color: white;
+    position: relative;
+    overflow: hidden;
 
-section { max-width: 1100px; margin: auto; padding: 70px 20px; }
+    /* Hero Background Image */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.imgur.com/GzF4e0D.jpeg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.hero * { position: relative; z-index: 2; }
+
+.hero h1 {
+    font-size: 64px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px var(--neon);
+    background: linear-gradient(45deg, #00eaff, #ffffff, #00eaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero p {
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 0;
+    color: #b3c0d6;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+}
+
+button {
+    padding: 15px 40px;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.4s ease-in-out;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+button:hover {
+    background: var(--primary);
+    color: var(--background-dark);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--neon);
+}
+
+/* --- 4. Section Styling (Increased Width) --- */
+section {
+    max-width: **1400px**; /* WIDER CONTENT AREA */
+    margin: auto;
+    padding: 80px 20px;
+    position: relative;
+}
+
 h2 {
-    text-align: center; color: var(--primary);
-    text-shadow: 0 0 10px var(--primary); margin-bottom: 40px;
+    font-size: 40px;
+    text-align: center;
+    color: var(--primary);
+    text-shadow: 0 0 15px var(--neon);
+    margin-bottom: 50px;
+    font-weight: 700;
+    position: relative;
+    letter-spacing: 1px;
+}
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--neon);
+    margin: 10px auto 0;
+    box-shadow: 0 0 10px var(--neon);
+    border-radius: 2px;
 }
 
 .grid {
-    display: grid; gap: 25px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: grid;
+    gap: 30px;
+    /* Adjusted minmax for better use of wide space */
+    grid-template-columns: repeat(auto-fit, minmax(**280px**, 1fr));
 }
+
+/* --- 5. Card Styling (Decreased Height) --- */
 .card {
-    background: rgba(255,255,255,0.05);
-    padding: 25px; border-radius: 14px;
-    border: 1px solid rgba(0,255,255,0.2);
-    box-shadow: 0 0 20px rgba(0,255,255,0.1);
-    transition: 0.4s; position: relative; overflow: hidden;
+    background: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+    transition: 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-.card:hover { transform: translateY(-10px); box-shadow: 0 0 25px var(--primary); border-color: var(--primary); }
-
-.card::before {
-    content: ""; position: absolute;
-    width: 120%; height: 120%; top: -30%; left: -30%;
-    background: url('https://i.imgur.com/ZJjZ6fK.png');
-    background-size: cover; opacity: 0.08; transform: rotate(25deg);
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px var(--primary), 0 0 10px var(--neon);
+    border-color: var(--primary);
 }
 
+.card-image-container {
+    width: 100%;
+    height: **150px**; /* DECREASED HEIGHT */
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease-in-out;
+}
+
+.card:hover .card-image-container img {
+    transform: scale(1.08);
+}
+
+.card-content {
+    padding: **20px**; /* REDUCED PADDING */
+}
+
+.card i {
+    font-size: 30px; /* Slight reduction for space */
+    color: var(--neon);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--neon);
+}
+.card h3 {
+    font-size: 22px; /* Slight reduction for space */
+    color: var(--primary);
+    margin: 0 0 8px;
+    font-weight: 600;
+}
+.card p {
+    color: #c4d0e1;
+    font-size: 15px; /* Slight reduction for space */
+    margin: 0;
+}
+
+/* --- 6. Contact Section --- */
+#contact {
+    background: #060a18;
+    padding-bottom: 100px;
+}
 .contact-box {
-    background: rgba(255,255,255,0.05);
-    padding: 35px; border-radius: 14px; text-align: center;
-    border: 1px solid rgba(0,255,255,0.2);
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+    max-width: 800px;
+    margin: 0 auto;
 }
-.contact-box a { color: var(--primary); font-size: 22px; font-weight: bold; }
+.contact-box h3 {
+    font-size: 24px;
+    margin: 20px 0 8px;
+    color: var(--neon);
+    font-weight: 600;
+}
+.contact-box p {
+    font-size: 20px;
+    margin: 0;
+}
+.contact-box a {
+    color: var(--primary);
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+.contact-box a:hover {
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon);
+}
 
+iframe {
+    width: 100%; height: 300px;
+    border: 1px solid var(--primary) !important;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    margin-top: 25px;
+}
+
+/* --- 7. Footer --- */
 footer {
-    text-align: center; padding: 20px;
-    background: #060a18; color: #aaa;
-    border-top: 1px solid rgba(0,255,255,0.1);
+    text-align: center;
+    padding: 20px;
+    background: #050811;
+    color: #aaa;
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    font-size: 14px;
 }
 </style>
 </head>
@@ -115,82 +283,190 @@ footer {
         ProjectKart
     </h2>
     <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
+        <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#projects"><i class="fas fa-microchip"></i> Projects</a>
+        <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+        <a href="#blog"><i class="fas fa-newspaper"></i> Blog</a>
+        <a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a>
     </nav>
 </header>
 
 <div class="hero">
     <h1>Innovative Electronics & IoT Projects</h1>
-    <p>Custom project kits | Robotics | Embedded Systems | IoT | Guidance</p>
-    <button onclick="document.getElementById('projects').scrollIntoView()">Explore Projects</button>
+    <p>Custom project kits | Robotics | Embedded Systems | IoT | Expert Guidance</p>
+    <button onclick="document.getElementById('projects').scrollIntoView()"><i class="fas fa-rocket"></i> Launch Your Project</button>
 </div>
 
 <section id="about">
-    <h2>About ProjectKart</h2>
-    <p>ProjectKart empowers students, creators, hobbyists & engineers with electronics project kits and expert guidance.</p>
+    <h2><i class="fas fa-lightbulb"></i> About ProjectKart</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 18px; color: #b3c0d6;">
+        ProjectKart is the future of hands-on learning, empowering students, creators, hobbyists, and professional engineers with **cutting-edge electronics project kits** and **unparalleled expert guidance**. We bridge the gap between theory and real-world innovation.
+    </p>
 </section>
 
 <section id="projects">
-    <h2>Our Project Portfolio</h2>
+    <h2><i class="fas fa-project-diagram"></i> Our Project Portfolio</h2>
     <div class="grid">
-        <div class="card"><h3>IoT Smart Home System</h3><p>ESP32-based automation system.</p></div>
-        <div class="card"><h3>Drone Technology</h3><p>Autonomous drones for research.</p></div>
-        <div class="card"><h3>School Projects</h3><p>Robotics and science models.</p></div>
-        <div class="card"><h3>College Capstone</h3><p>Embedded & AI-based projects.</p></div>
-        <div class="card"><h3>Robotics</h3><p>Line followers & firefighting bots.</p></div>
-        <div class="card"><h3>Custom Builds</h3><p>Your idea → working prototype.</p></div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/Qj4R5kX.jpeg" alt="IoT Smart Home System">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-house-signal"></i>
+                <h3>IoT Smart Home System</h3>
+                <p>Develop an ESP32-based complete home automation system controlled via the cloud.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/eE13u6R.jpeg" alt="Drone Technology">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-plane-departure"></i>
+                <h3>Advanced Drone Technology</h3>
+                <p>Build and program autonomous flight systems for mapping, surveillance, and research.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/x1Yh7J3.jpeg" alt="School Projects">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>School Projects & Models</h3>
+                <p>Interactive robotics and science exhibition models that guarantee top marks and learning.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/N1853n2.jpeg" alt="College Capstone">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-terminal"></i>
+                <h3>College Capstone Projects</h3>
+                <p>High-impact Embedded, AI, and Machine Learning projects for final year submission.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/R385S3V.jpeg" alt="Robotics">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-robot"></i>
+                <h3>Specialized Robotics</h3>
+                <p>Kits for line followers, obstacle avoidance, and specialized firefighting bots.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/D4s3hF6.jpeg" alt="Custom Builds">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-tools"></i>
+                <h3>Custom Builds & Prototypes</h3>
+                <p>Bring your unique idea to life—from concept to a fully functional working prototype.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section id="services">
-    <h2>Our Services</h2>
-    <div class="grid">
-        <div class="card"><h3>Project Consultation</h3><p>Guidance for coding & circuits.</p></div>
-        <div class="card"><h3>Components Supply</h3><p>Sensors & electronics parts.</p></div>
-        <div class="card"><h3>Workshops</h3><p>Arduino, IoT & Robotics training.</p></div>
+    <h2><i class="fas fa-handshake"></i> Our Services</h2>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/V9gqXfX.jpeg" alt="Project Consultation">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Project Consultation</h3>
+                <p>One-on-one guidance for complex coding, circuit design, and system integration.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/39Qp41v.jpeg" alt="Components Supply">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-box-open"></i>
+                <h3>Components Supply</h3>
+                <p>Reliable and fast supply of sensors, microcontrollers, and hard-to-find electronics parts.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/s64Wk2L.jpeg" alt="Workshops">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-users-cog"></i>
+                <h3>Workshops & Training</h3>
+                <p>In-depth, hands-on training sessions on Arduino, Raspberry Pi, IoT, and Advanced Robotics.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section id="blog">
-    <h2>Our Blog</h2>
+    <h2><i class="fas fa-scroll"></i> Our Knowledge Base</h2>
     <div class="grid">
-        <div class="card"><h3>Top 10 IoT Projects</h3><p>Beginner to advanced IoT ideas.</p></div>
-        <div class="card"><h3>How to Start With Robotics</h3><p>A complete beginner guide.</p></div>
-        <div class="card"><h3>Best Sensors for Projects</h3><p>Choose the right sensor every time.</p></div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/eB3x0vH.jpeg" alt="IoT Projects Blog">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-wifi"></i>
+                <h3>Top 10 IoT Projects</h3>
+                <p>Curated list of beginner to advanced IoT ideas to kickstart your journey.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/J3l4zI0.jpeg" alt="Robotics Guide Blog">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-code-branch"></i>
+                <h3>How to Start With Robotics</h3>
+                <p>A complete step-by-step guide for robotics enthusiasts and newcomers.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-container">
+                <img src="https://i.imgur.com/xH0Y83R.jpeg" alt="Sensors Guide Blog">
+            </div>
+            <div class="card-content">
+                <i class="fas fa-microscope"></i>
+                <h3>Best Sensors for Projects</h3>
+                <p>A detailed breakdown to help you choose the right sensor for precision and performance.</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- ⭐ CONTACT WITH MAP ⭐ -->
 <section id="contact">
-    <h2>Contact Us</h2>
+    <h2><i class="fas fa-headset"></i> Get In Touch</h2>
+    <div class="contact-box">
 
-    <div class="contact-box" style="font-size: 18px; line-height: 1.2;">
-
-        <h3 style="font-size: 20px; margin-bottom: 5px;">Call Us Anytime</h3>
-        <p style="font-size: 22px; margin: 0;">
+        <h3 style="margin-top: 0;">Call Us Anytime</h3>
+        <p>
             📞 <a href="tel:9556222983">9556222983</a>
         </p>
 
-        <h3 style="font-size: 20px; margin: 15px 0 5px;">Email</h3>
-        <p style="font-size: 20px; margin: 0;">
+        <h3>Email Support</h3>
+        <p>
             📧 <a href="mailto:projectkart2@gmail.com">projectkart2@gmail.com</a>
         </p>
 
-        <h3 style="font-size: 20px; margin: 15px 0 5px;">Our Location</h3>
-        <p style="font-size: 18px; margin: 0;">
+        <h3>Our Physical Location</h3>
+        <p>
             📍 ProjectKart, Uttara, Bhubaneswar, Odisha 751003
         </p>
 
-        <!-- ⭐ RESIZED MAP BOX ⭐ -->
-        <div style="margin-top: 20px; width:80%; margin-left:auto; margin-right:auto;">
+        <div style="margin-top: 25px;">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d294.0440547124071!2d85.85480960381726!3d20.19633391842738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a1765c2a284f%3A0xad69171262f6edfc!2sProjectKart!5e0!3m2!1sen!2sin!4v1732105529000!5m2!1sen!2sin"
-                width="100%" height="220"
-                style="border:0; border-radius:12px; box-shadow:0 0 12px rgba(0,255,255,0.3);"
+                width="100%"
+                height="300"
+                style="border:0; border-radius:12px; box-shadow:0 0 15px rgba(0, 255, 255, 0.5);"
                 allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
@@ -199,7 +475,7 @@ footer {
     </div>
 </section>
 
-<footer>© 2025 ProjectKart | All Rights Reserved</footer>
+<footer>© 2025 ProjectKart | All Rights Reserved | Designed with a touch of Cyber-Neon</footer>
 
 </body>
 </html>
