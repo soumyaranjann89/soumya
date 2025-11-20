@@ -6,6 +6,7 @@
 <title>ProjectKart - Innovative Electronics & IoT Projects</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
 /* --- 1. Global & Background --- */
@@ -27,24 +28,25 @@ body::before {
 }
 @keyframes gridMove { from { background-position: 0 0; } to { background-position: 100px 100px; } }
 
-:root { --primary: #00eaff; --neon: #00fff2; }
-html { scroll-behavior: smooth; } /* Smooth scrolling */
+:root { --primary: #00eaff; --neon: #00fff2; --shadow-dark: rgba(0,255,255,0.4); }
+html { scroll-behavior: smooth; } /* Smooth scrolling for simulated pages */
+hr { border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 255, 255, 0.2), rgba(0, 0, 0, 0)); margin: 50px auto; }
 
-/* --- 2. Header & Navigation --- */
+/* --- 2. Header & Navigation (Dark Glass Effect) --- */
 header {
-    background: rgba(10,20,50,0.6);
+    background: rgba(10,20,50,0.7); /* Darker transparent background */
     padding: 20px 40px;
     display: flex; justify-content: space-between; align-items: center;
     border-bottom: 1px solid rgba(0,255,255,0.2);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Dark Glass Effect */
     position: sticky; top: 0; z-index: 999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 header h2 {
     display: flex; align-items: center; gap: 10px;
     color: var(--primary); text-shadow: 0 0 12px var(--primary);
     font-size: 24px;
 }
-/* *** LOGO STYLE: logo.png will be displayed with this style *** */
 .logo { height: 45px; filter: drop-shadow(0 0 10px var(--primary)); }
 
 .nav-links a {
@@ -62,11 +64,13 @@ header h2 {
     background: radial-gradient(circle at top, #0e1838, #050811);
 }
 .hero h1 {
-    font-size: 52px; font-weight: 700;
-    text-shadow: 0 0 15px var(--primary); margin-bottom: 15px;
+    font-size: 56px; font-weight: 700;
+    text-shadow: 0 0 20px var(--primary); /* Stronger neon effect */
+    margin-bottom: 15px;
 }
 .hero p {
-    font-size: 20px; font-weight: 300; margin-bottom: 30px;
+    font-size: 22px; font-weight: 300; margin-bottom: 30px;
+    color: #b0c2e0;
 }
 button {
     padding: 14px 35px; border: 2px solid var(--primary);
@@ -74,42 +78,85 @@ button {
     border-radius: 10px; cursor: pointer; font-size: 18px;
     transition: 0.3s; margin-top: 25px;
     font-weight: 600;
+    box-shadow: 0 0 10px rgba(0,255,255,0.3); /* Neon border shadow */
 }
-button:hover { background: var(--primary); color: #0a0f24; transform: scale(1.05); box-shadow: 0 0 15px var(--neon); }
+button:hover { 
+    background: var(--primary); color: #0a0f24; 
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px var(--neon);
+}
 
 /* --- 4. Main Content Sections --- */
 section { max-width: 1100px; margin: auto; padding: 70px 20px; }
 h2 {
     text-align: center; color: var(--primary);
-    text-shadow: 0 0 10px var(--primary); margin-bottom: 40px;
-    font-size: 32px;
+    text-shadow: 0 0 10px var(--primary); margin-bottom: 50px;
+    font-size: 36px;
 }
 h3 { color: var(--neon); margin-top: 0; font-weight: 600; }
 
 .grid {
-    display: grid; gap: 25px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    display: grid; gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly larger cards */
 }
 .card {
-    background: rgba(255,255,255,0.05);
-    padding: 25px; border-radius: 14px;
+    background: rgba(255,255,255,0.07); /* Slightly lighter dark glass */
+    padding: 30px; border-radius: 16px;
     border: 1px solid rgba(0,255,255,0.2);
-    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    box-shadow: 0 0 20px rgba(0,255,255,0.15);
     transition: 0.4s; position: relative; overflow: hidden;
     line-height: 1.6;
+    backdrop-filter: blur(5px); /* Card dark glass effect */
 }
-.card:hover { transform: translateY(-10px); box-shadow: 0 0 25px var(--primary); border-color: var(--primary); }
+.card:hover { 
+    transform: translateY(-12px); 
+    box-shadow: 0 0 30px var(--primary); 
+    border-color: var(--primary); 
+}
 
 /* Faint abstract background for cards */
 .card::before {
     content: ""; position: absolute;
     width: 120%; height: 120%; top: -30%; left: -30%;
-    /* Subtle texture image */
     background: url('https://i.imgur.com/ZJjZ6fK.png');
     background-size: cover; opacity: 0.08; transform: rotate(25deg);
 }
+.card i { color: var(--primary); margin-right: 10px; }
 
-/* --- 5. Contact Section Styling --- */
+/* --- 5. Enquiry Form Section --- */
+#enquiry h2 { margin-bottom: 30px; }
+.form-container {
+    max-width: 600px; margin: auto;
+    background: rgba(255,255,255,0.05);
+    padding: 30px; border-radius: 16px;
+    border: 1px solid rgba(0,255,255,0.2);
+    box-shadow: 0 0 25px rgba(0,255,255,0.2);
+}
+.form-container label {
+    display: block; margin-bottom: 8px; font-weight: 600;
+    color: var(--neon);
+}
+.form-container input, .form-container textarea {
+    width: 100%; padding: 12px; margin-bottom: 20px;
+    border: 1px solid rgba(0,255,255,0.3);
+    border-radius: 8px;
+    background: rgba(10,20,50,0.8);
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box; /* Include padding/border in width */
+}
+.form-container input:focus, .form-container textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px var(--primary);
+    outline: none;
+}
+.form-container button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* --- 6. Contact & Footer --- */
 .contact-box {
     background: rgba(255,255,255,0.05);
     padding: 35px; border-radius: 14px; text-align: center;
@@ -119,7 +166,6 @@ h3 { color: var(--neon); margin-top: 0; font-weight: 600; }
 .contact-box a:hover { color: var(--neon); text-shadow: 0 0 5px var(--neon); }
 .contact-item { margin-bottom: 20px; }
 
-/* --- 6. Footer --- */
 footer {
     text-align: center; padding: 20px;
     background: #060a18; color: #aaa;
@@ -127,7 +173,7 @@ footer {
     font-size: 14px;
 }
 
-/* --- 7. Responsiveness (Mobile Adjustments) --- */
+/* --- 7. Mobile Responsiveness --- */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -138,16 +184,30 @@ footer {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
     }
     .nav-links a {
-        margin: 5px 10px;
+        margin: 5px 8px;
         font-size: 14px;
     }
-    .hero { padding: 80px 20px; }
-    .hero h1 { font-size: 36px; }
-    h2 { font-size: 28px; }
+    .hero { padding: 60px 15px; }
+    .hero h1 { font-size: 42px; }
+    .hero p { font-size: 18px; }
+    h2 { font-size: 30px; margin-bottom: 30px; }
     section { padding: 50px 15px; }
-    .contact-box { width: 100%; padding: 25px 15px; box-sizing: border-box; }
+    .card { padding: 20px; }
+    
+    .contact-box {
+        padding: 25px 15px;
+    }
+    .contact-box a { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 32px; }
+    .logo { height: 35px; }
+    header h2 { font-size: 20px; }
+    .nav-links a { font-size: 12px; margin: 5px 5px; }
 }
 
 </style>
@@ -164,7 +224,7 @@ footer {
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#services">Services</a>
-        <a href="#blog">Blog</a>
+        <a href="#enquiry">Enquiry</a> 
         <a href="#contact">Contact</a>
     </nav>
 </header>
@@ -172,7 +232,7 @@ footer {
 <div class="hero">
     <h1 data-aos="fade-up">Innovative Electronics & IoT Projects</h1>
     <p data-aos="fade-up" data-aos-delay="200">Custom project kits | Robotics | Embedded Systems | IoT | Guidance</p>
-    <button onclick="document.getElementById('projects').scrollIntoView()" data-aos="zoom-in" data-aos-delay="400">Explore Projects</button>
+    <button onclick="document.getElementById('projects').scrollIntoView()" data-aos="zoom-in" data-aos-delay="400">Explore Projects <i class="fas fa-arrow-right"></i></button>
 </div>
 
 <section id="about">
@@ -180,35 +240,51 @@ footer {
     <p data-aos="fade-up">ProjectKart empowers students, creators, hobbyists & engineers with **electronics project kits** and **expert guidance**. We are committed to fostering innovation in the fields of robotics, embedded systems, and the Internet of Things.</p>
 </section>
 
+<hr>
+
 <section id="projects">
     <h2 data-aos="fade-down">Our Project Portfolio</h2>
     <div class="grid">
-        <div class="card" data-aos="flip-up" data-aos-delay="100"><h3>IoT Smart Home System</h3><p>Develop an ESP32-based automation system using mobile and cloud integration.</p></div>
-        <div class="card" data-aos="flip-up" data-aos-delay="200"><h3>Drone Technology</h3><p>Build and program autonomous drones for environmental monitoring and research applications.</p></div>
-        <div class="card" data-aos="flip-up" data-aos-delay="300"><h3>School Projects</h3><p>Simple and engaging robotics and science models designed for educational demonstrations.</p></div>
-        <div class="card" data-aos="flip-up" data-aos-delay="100"><h3>College Capstone</h3><p>Advanced embedded and AI-based projects suitable for final year academic submissions.</p></div>
-        <div class="card" data-aos="flip-up" data-aos-delay="200"><h3>Robotics</h3><p>Kits for line followers, obstacle avoidance, and fire fighting robots using Arduino/Raspberry Pi.</p></div>
-        <div class="card" data-aos="flip-up" data-aos-delay="300"><h3>Custom Builds</h3><p>We transform your unique technological idea into a fully functional working prototype.</p></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="100"><h3><i class="fas fa-home"></i> IoT Smart Home System</h3><p>Develop an ESP32-based automation system using mobile and cloud integration.</p></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="200"><h3><i class="fas fa-drone"></i> Drone Technology</h3><p>Build and program autonomous drones for environmental monitoring and research applications.</p></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="300"><h3><i class="fas fa-robot"></i> Robotics</h3><p>Kits for line followers, obstacle avoidance, and fire fighting robots using Arduino/Raspberry Pi.</p></div>
+        <div class="card" data-aos="flip-left" data-aos-delay="400"><h3><i class="fas fa-microchip"></i> College Capstone</h3><p>Advanced embedded and AI-based projects suitable for final year academic submissions.</p></div>
     </div>
 </section>
+
+<hr>
 
 <section id="services">
     <h2 data-aos="fade-down">Our Services</h2>
     <div class="grid">
-        <div class="card" data-aos="fade-right"><h3>Project Consultation</h3><p>One-on-one expert guidance for optimizing your project's coding logic and circuit design.</p></div>
-        <div class="card" data-aos="fade-up"><h3>Components Supply</h3><p>Reliable sourcing of microcontrollers, sensors, actuators, and all essential electronics parts.</p></div>
-        <div class="card" data-aos="fade-left"><h3>Workshops</h3><p>Hands-on training sessions and crash courses in Arduino, IoT development, and advanced Robotics.</p></div>
+        <div class="card" data-aos="fade-right"><h3><i class="fas fa-comments"></i> Project Consultation</h3><p>One-on-one expert guidance for optimizing your project's coding logic and circuit design.</p></div>
+        <div class="card" data-aos="fade-up"><h3><i class="fas fa-box-open"></i> Components Supply</h3><p>Reliable sourcing of microcontrollers, sensors, actuators, and all essential electronics parts.</p></div>
+        <div class="card" data-aos="fade-left"><h3><i class="fas fa-chalkboard-teacher"></i> Workshops</h3><p>Hands-on training sessions and crash courses in Arduino, IoT development, and advanced Robotics.</p></div>
     </div>
 </section>
 
-<section id="blog">
-    <h2 data-aos="fade-down">Our Blog</h2>
-    <div class="grid">
-        <div class="card" data-aos="zoom-in-up"><h3>Top 10 IoT Projects</h3><p>A curated list of beginner to advanced IoT ideas you can build today.</p></div>
-        <div class="card" data-aos="zoom-in-up" data-aos-delay="100"><h3>How to Start With Robotics</h3><p>A complete beginner guide to choosing components and writing your first code.</p></div>
-        <div class="card" data-aos="zoom-in-up" data-aos-delay="200"><h3>Best Sensors for Projects</h3><p>Learn how to choose the right sensor for your specific application every time.</p></div>
+<hr>
+
+<section id="enquiry">
+    <h2 data-aos="fade-down"><i class="fas fa-paper-plane"></i> Quick Enquiry</h2>
+    <div class="form-container" data-aos="zoom-in">
+        <p style="text-align: center; color: #aaa;">Tell us about your project idea or question.</p>
+        <form onsubmit="alert('Thank you for your enquiry! We will contact you soon.'); return false;">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email / Phone:</label>
+            <input type="text" id="email" name="email" required>
+            
+            <label for="project">Your Project Idea / Question:</label>
+            <textarea id="project" name="project" rows="4" required></textarea>
+            
+            <button type="submit">Send Enquiry <i class="fas fa-share-square"></i></button>
+        </form>
     </div>
 </section>
+
+<hr>
 
 <section id="contact">
     <h2 data-aos="fade-down">Contact Us</h2>
@@ -216,29 +292,29 @@ footer {
     <div class="contact-box" data-aos="zoom-in" style="font-size: 18px; line-height: 1.2;">
 
         <div class="contact-item">
-            <h3 style="font-size: 20px; margin-bottom: 5px;">Call Us Anytime</h3>
+            <h3 style="font-size: 20px; margin-bottom: 5px;"><i class="fas fa-phone-alt"></i> Call Us Anytime</h3>
             <p style="font-size: 22px; margin: 0;">
                 📞 <a href="tel:9556222983">9556222983</a>
             </p>
         </div>
 
         <div class="contact-item">
-            <h3 style="font-size: 20px; margin: 15px 0 5px;">Email</h3>
+            <h3 style="font-size: 20px; margin: 15px 0 5px;"><i class="fas fa-envelope"></i> Email</h3>
             <p style="font-size: 20px; margin: 0;">
                 📧 <a href="mailto:projectkart2@gmail.com">projectkart2@gmail.com</a>
             </p>
         </div>
 
         <div class="contact-item">
-            <h3 style="font-size: 20px; margin: 15px 0 5px;">Our Location</h3>
+            <h3 style="font-size: 20px; margin: 15px 0 5px;"><i class="fas fa-map-marker-alt"></i> Our Location</h3>
             <p style="font-size: 18px; margin: 0;">
-                📍 ProjectKart, Uttara, Bhubaneswar, Odisha 751003
+                📍 **projectkart, Road to CIFA Aquarium, Pubasasan, Uttara, Bhubaneswar, Odisha 751002**
             </p>
         </div>
 
         <div style="margin-top: 30px; width:100%; max-width: 600px; margin-left:auto; margin-right:auto;">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119771.5593881729!2d85.73356027376722!3d20.301332824905297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19b88236785539%3A0x4a44d0362c9c7f68!2sProjectKart!5e0!3m2!1sen!2sin!4v1707914560037!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.507717599596!2d85.85232237573676!3d20.196212515851187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a1765c2a284f%3A0xad69171262f6edfc!2sprojectkart!5e0!3m2!1sen!2sin!4v1763640888879!5m2!1sen!2sin"
                 width="100%" height="220"
                 style="border:0; border-radius:12px; box-shadow:0 0 12px rgba(0,255,255,0.3);"
                 allowfullscreen="" loading="lazy"
@@ -256,6 +332,7 @@ footer {
   AOS.init({
     duration: 800, // duration of the animation
     once: true,    // whether animation should only happen once
+    offset: 150,   // offset (in px) from the original trigger point
   });
 </script>
 
