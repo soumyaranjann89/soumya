@@ -1,556 +1,777 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ProjectKart – Electronics & IoT Projects</title>
-
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Fonts & Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-<!-- AOS -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-<style>
-  body { font-family: 'Poppins', sans-serif; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectkart | Hardware R&D, IoT Solutions, Industrial Automation & 3D Printing India</title>
+    <meta name="description" content="Projectkart is a premier hardware R&D, product engineering, industrial automation, IoT integration, and 3D printing solutions provider based in Bhubaneswar, India, serving pan-India academic and industrial clients.">
+    <meta name="keywords" content="Projectkart, Morphedo style hardware R&D, product engineering India, industrial automation Bhubaneswar, IoT development, 3D printing services, school college electronics projects, Soumya Ranjan Nayak">
+    <meta name="author" content="Projectkart">
+    <link rel="canonical" href="https://projectkart.co.in/">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        darkBg: '#070b14',
+                        cardBg: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #070b14;
+            color: #f1f5f9;
+        }
+        .glass-header {
+            background: rgba(7, 11, 20, 0.9);
+            backdrop-filter: blur(16px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.18) 0%, rgba(7, 11, 20, 0) 70%);
+        }
+        .card-glow {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-glow:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 16px 35px -10px rgba(99, 102, 241, 0.3);
+        }
+        .floating-whatsapp {
+            animation: bounce-subtle 3s infinite ease-in-out;
+        }
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
 </head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
 
-
-<!-- ================= ROCKET BUTTON ================= -->
-<button
-  id="rocketBtn"
-  class="fixed right-6 z-50 hidden w-14 h-14 rounded-full
-         bg-gradient-to-br from-cyan-500 to-teal-500
-         shadow-2xl flex items-center justify-center
-         transition hover:scale-110"
-  style="top:70vh;"
->
-
-  <!-- ===== ROCKET SVG ===== -->
-  <svg width="26" height="26" viewBox="0 0 512 512" fill="none">
-    <!-- Body -->
-    <path d="M256 16C176 96 176 256 256 480C336 256 336 96 256 16Z" fill="white"/>
-    <!-- Window -->
-    <circle cx="256" cy="200" r="26" fill="#0EA5E9"/>
-    <!-- Left fin -->
-    <path d="M176 304L128 352L176 368V304Z" fill="white"/>
-    <!-- Right fin -->
-    <path d="M336 304L384 352L336 368V304Z" fill="white"/>
-    <!-- Flame -->
-    <path d="M256 480C232 448 240 416 256 400C272 416 280 448 256 480Z"
-          fill="#F97316" class="rocket-flame"/>
-  </svg>
-</button>
-
-<!-- Smoke Container -->
-<svg id="smokeContainer" class="pointer-events-none fixed inset-0 z-40"></svg>
-
-<!-- ================= STYLES ================= -->
-<style>
-/* Floating rocket */
-#rocketBtn {
-  animation: float 2.5s ease-in-out infinite;
-}
-@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-
-/* Flame flicker */
-.rocket-flame {
-  transform-origin: center;
-  animation: flame 0.25s infinite alternate;
-}
-@keyframes flame { from {transform:scaleY(1);} to {transform:scaleY(1.25);} }
-
-/* Boost straight up */
-.boost { animation: boostUp 0.9s ease-out forwards !important; }
-@keyframes boostUp { to { transform: translateY(-120vh); opacity:0; } }
-
-/* Smoke SVG circles */
-.smoke-circle {
-  fill: rgba(200,200,200,0.5);
-  filter: blur(4px);
-  animation: smokeRise 1s ease-out forwards;
-}
-
-@keyframes smokeRise {
-  to { transform: translateY(-40px) scale(2); opacity:0; }
-}
-
-/* Confetti */
-.confetti { position: fixed; top:0; font-size:16px; animation: confettiFall 1.2s ease-out forwards; }
-@keyframes confettiFall { to { transform: translateY(100vh) rotate(720deg); opacity:0; } }
-</style>
-
-
-<body class="bg-white text-gray-800 scroll-smooth">
-
-<!-- ================= HEADER ================= -->
-<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b shadow-sm">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <img src="logo.png" alt="ProjectKart Logo" class="h-12 md:h-16">
-      <h2 class="text-2xl md:text-4xl font-bold text-cyan-600">
-        ProjectKart
-      </h2>
+    <!-- Top Contact Bar -->
+    <div class="bg-gradient-to-r from-indigo-900 via-brand-700 to-slate-900 text-xs sm:text-sm py-2 px-4 text-slate-200 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-4">
+                <span><i class="fa-solid fa-location-dot text-indigo-400 mr-1.5"></i> Bhubaneswar, Odisha, India</span>
+                <span class="hidden sm:inline"><i class="fa-solid fa-shield-halved text-indigo-400 mr-1.5"></i> Pan-India R&D & Delivery</span>
+            </div>
+            <div class="flex items-center gap-5 font-medium">
+                <a href="tel:9337630692" class="hover:text-white transition"><i class="fa-solid fa-phone text-indigo-400 mr-1.5"></i> +91 93376-30692</a>
+                <a href="mailto:soumyaranjann89@gmail.com" class="hover:text-white transition"><i class="fa-solid fa-envelope text-indigo-400 mr-1.5"></i> soumyaranjann89@gmail.com</a>
+            </div>
+        </div>
     </div>
 
-    <!-- Desktop Nav -->
-    <nav class="hidden md:flex gap-8 font-semibold text-xl">
-      <a href="#about" class="hover:text-cyan-600">About</a>
-      <a href="#projects" class="hover:text-cyan-600">Projects</a>
-      <a href="#services" class="hover:text-cyan-600">Services</a>
-      <a href="#enquiry" class="hover:text-cyan-600">Enquiry</a>
-      <a href="#contact" class="hover:text-cyan-600">Contact</a>
-    </nav>
-
-    <!-- Mobile Menu Button -->
-    <button onclick="toggleMenu()" class="md:hidden text-2xl">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-6 py-4 space-y-4 font-semibold">
-    <a href="#about" onclick="toggleMenu()">About</a> <br>
-    <a href="#projects" onclick="toggleMenu()">Projects</a><br>
-    <a href="#services" onclick="toggleMenu()">Services</a><br>
-    <a href="#enquiry" onclick="toggleMenu()">Enquiry</a><br>
-    <a href="#contact" onclick="toggleMenu()">Contact</a>
-  </div>
-</header>
-
-<!-- ================= HERO ================= -->
-<section class="bg-gradient-to-br from-cyan-50 to-white">
-  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center py-20 px-6">
-
-    <div data-aos="fade-right">
-      <h1 class="text-6xl md:text-5xl font-bold mb-6">
-        Innovative <span class="text-cyan-600">Electronics & IoT</span> Projects
-      </h1>
-      <p class="text-gray-600 text-base md:text-lg mb-8">
-        Custom project kits, robotics, embedded systems & expert guidance for students and innovators.
-      </p>
-      <button onclick="document.getElementById('projects').scrollIntoView()"
-        class="px-8 py-3 bg-cyan-500 text-white rounded-xl font-semibold hover:bg-cyan-600 shadow-lg transition">
-        Explore Projects →
-      </button>
-    </div>
-
-    <div data-aos="fade-left">
-      <img src="heroimg.png"
-        class="rounded-3xl shadow-2xl w-full object-cover">
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= ABOUT ================= -->
-<section id="about" class="max-w-5xl mx-auto py-20 px-6 text-center">
-  <h2 class="text-6xl font-bold text-cyan-600 mb-6" data-aos="fade-down">
-    About ProjectKart
-  </h2>
-  <p class="text-gray-600 leading-relaxed" data-aos="fade-up">
-    ProjectKart helps students, creators, hobbyists, and engineers build electronics projects with easy kits and expert support in robotics, embedded systems, and IoT, making learning practical, simple, and fun.
-
-  </p>
-</section>
-
-<!-- ================= PROJECTS ================= -->
-<section id="projects" class="py-24 bg-gray-50 px-6">
-  <h2 class="text-6xl font-bold text-center text-cyan-600 mb-14">
-    Our Project Portfolio
-  </h2>
-
-  <div class="max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-
-    <!-- Card -->
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-xl transition overflow-hidden">
-      <img src="IoT.png"
-        class="h-40 w-full object-cover">
-      <div class="p-6">
-        <h2 class="font-semibold text-cyan-600 mb-2">IoT Projects</h2>
-        <p class="text-xl text-gray-600">ESP32-based automation with cloud & mobile control.</p>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-xl transition overflow-hidden">
-      <img src="Drone.png"
-        class="h-40 w-full object-cover">
-      <div class="p-6">
-        <h2 class="font-semibold text-cyan-600 mb-2">Drone Technology</h2>
-        <p class="text-xl text-gray-600">Autonomous drones for monitoring & research.</p>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-xl transition overflow-hidden">
-      <img src="robotics.png"
-        class="h-40 w-full object-cover">
-      <div class="p-6">
-        <h2 class="font-semibold text-cyan-600 mb-2">Robotics</h2>
-        <p class="text-xl text-gray-600">Line follower, obstacle & fire robots.</p>
-      </div>
-    </div>
-
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-xl transition overflow-hidden">
-      <img src="capstoneproject.png"
-        class="h-40 w-full object-cover">
-      <div class="p-6">
-        <h2 class="font-semibold text-cyan-600 mb-2">Capstone Projects</h2>
-        <p class="text-xl text-gray-600">Final-year embedded & AI-based projects.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- ================= SERVICES ================= -->
-<section id="services" class="py-24 bg-gray-50 px-6">
-  <h2 class="text-6xl font-bold text-center text-cyan-600 mb-14">
-    Our Services
-  </h2>
-
-  <div class="max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-
-    <!-- R&D Team -->
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-2xl transition overflow-hidden">
-      <img src="R&D.png" class="h-40 w-full object-cover" alt="R&D Team">
-      <div class="p-6">
-        <h3 class="text-2xl font-semibold text-cyan-600 mb-2">R&amp;D Team</h3>
-        <p class="text-gray-600 text-lg">
-          Product research, prototyping, testing, and innovation support for startups and industries.
-        </p>
-      </div>
-    </div>
-
-    <!-- 3D Printing -->
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-2xl transition overflow-hidden">
-      <img src="3D.png" class="h-40 w-full object-cover" alt="3D Printing">
-      <div class="p-6">
-        <h3 class="text-2xl font-semibold text-cyan-600 mb-2">3D Printing</h3>
-        <p class="text-gray-600 text-lg">
-          High-quality rapid prototyping and custom 3D printed components for projects.
-        </p>
-      </div>
-    </div>
-
-    <!-- School / College Projects -->
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-2xl transition overflow-hidden">
-      <img src="school.png" class="h-40 w-full object-cover" alt="School and College Projects">
-      <div class="p-6">
-        <h3 class="text-2xl font-semibold text-cyan-600 mb-2">School / College Projects</h3>
-        <p class="text-gray-600 text-lg">
-          Mini, major, and capstone projects with full guidance, reports, and demos.
-        </p>
-      </div>
-    </div>
-
-    <!-- IoT Services -->
-    <div class="bg-white rounded-3xl shadow hover:-translate-y-2 hover:shadow-2xl transition overflow-hidden">
-      <img src="component.png" class="h-40 w-full object-cover" alt="IoT Services">
-      <div class="p-6">
-        <h3 class="text-2xl font-semibold text-cyan-600 mb-2">Component Supply</h3>
-        <p class="text-gray-600 text-lg">
-          supply all types of PCB components including resistors, capacitors, ICs, diodes, transistors, connectors, LEDs, sensors, switches, and more
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================= ENQUIRY ================= -->
-<!-- ================= ENQUIRY SECTION ================= -->
-<section id="enquiry" class="py-20 px-6">
-  <h2 class="text-5xl font-bold text-center text-cyan-400 mb-6" data-aos="fade-down">
-     Quick Enquiry
-  </h2>
-
-
-  <form
-    action="https://formsubmit.co/projectkart2@gmail.com"
-    method="POST"
-    data-aos="zoom-in"
-    class="max-w-xl mx-auto bg-white p-8 rounded-3xl shadow-lg space-y-5"
-  >
-
-    <!-- Anti-spam & config -->
-    <input type="hidden" name="_honeypot" value="">
-    <input type="hidden" name="_subject" value="New ProjectKart Website Enquiry">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-
-    <div>
-      <label class="block mb-1 text-gray-300">Name</label>
-      <input
-        type="text"
-        name="Name"
-        placeholder="Your Name"
-        required
-        class="w-full p-3 rounded-xl bg-gray-200 border  focus:ring-2 focus:ring-cyan-400 outline-none"
-      >
-    </div>
-
-    <div>
-      <label class="block mb-1 text-gray-300">Email / Phone</label>
-      <input
-        type="text"
-        name="Contact"
-        placeholder="Your Email or Phone"
-        required
-        class="w-full p-3 rounded-xl bg-gray-200 border  focus:ring-2 focus:ring-cyan-400 outline-none"
-      >
-    </div>
-
-    <div>
-      <label class="block mb-1 text-gray-300">Project Details</label>
-      <textarea
-        name="Project_Details"
-        rows="4"
-        placeholder="Describe your project or question..."
-        required
-        class="w-full p-3 rounded-xl  bg-gray-200 border  focus:ring-2 focus:ring-cyan-400 outline-none"
-      ></textarea>
-    </div>
-
-    <button
-      type="submit"
-      class="w-full py-3 rounded-xl bg-cyan-400 text-gray-900 font-semibold text-lg hover:bg-cyan-500 transition"
-    >
-      Send Enquiry <i class="fas fa-share-square ml-1"></i>
-    </button>
-  </form>
-</section>
-
-
-<!-- ===== PARALLAX WAVES ===== -->
-<div class="relative w-full h-[190px] overflow-hidden ">
-
-  <svg class="absolute bottom-0 left-0 w-[200%] h-full wave wave-slow"
-       viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path d="M0,30 C150,80 350,0 600,40 850,80 1050,20 1200,40 V120 H0 Z"
-          class="fill-cyan-200"/>
-  </svg>
-
-  <svg class="absolute bottom-0 left-0 w-[200%] h-full wave wave-mid"
-       viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path d="M0,40 C200,90 400,10 600,50 800,90 1000,30 1200,50 V120 H0 Z"
-          class="fill-cyan-300/70"/>
-  </svg>
-
-  <svg class="absolute bottom-0 left-0 w-[200%] h-full wave wave-fast"
-       viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path d="M0,50 C180,100 420,20 600,60 780,100 1020,40 1200,60 V120 H0 Z"
-          class="fill-teal-100/60"/>
-  </svg>
-
-  <svg class="absolute bottom-0 left-0 w-[200%] h-full wave wave-xfast"
-       viewBox="0 0 1200 120" preserveAspectRatio="none">
-    <path d="M0,60 C160,110 440,30 600,70 760,110 1040,50 1200,70 V120 H0 Z"
-          class="fill-white"/>
-  </svg>
-
-</div>
-
-<style>
-.wave { animation: waveMove linear infinite; }
-.wave-slow  { animation-duration: 28s; }
-.wave-mid   { animation-duration: 20s; }
-.wave-fast  { animation-duration: 14s; }
-.wave-xfast { animation-duration: 9s; }
-
-@keyframes waveMove {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-</style>
-
-
-
-<!-- ================= FOOTER ================= -->
-<footer class="relative overflow-hidden bg-gradient-to-br from-cyan-600 via-white to-teal-300 text-gray-700">
-
-  <!-- Floating Glow Orbs -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-cyan-300/30 rounded-full blur-3xl animate-pulse"></div>
-  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-teal-300/30 rounded-full blur-3xl animate-pulse"></div>
-
-  <!-- Main Content -->
-  <div class="relative max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-3 gap-16">
-
-    <!-- BRAND -->
-    <div class="space-y-6">
-      <div class="flex items-center gap-4">
-        <img src="logo.png" class="w-20 drop-shadow-xl" alt="ProjectKart Logo">
-        <h2 class="text-4xl font-extrabold bg-gradient-to-r from-cyan-600 to-teal-500 bg-clip-text text-transparent">
-          ProjectKart
-        </h2>
-      </div>
-
-      <p class="text-sm text-gray-600 leading-relaxed max-w-sm">
-        Electronics, IoT & software projects crafted for students and professionals.
-        We transform ideas into powerful real-world solutions 🚀
-      </p>
-
-      <!-- Social Media -->
-      <div class="flex gap-4 pt-2">
-        <a class="group w-11 h-11 flex items-center justify-center rounded-full bg-white/70 backdrop-blur shadow-lg hover:bg-cyan-600 transition">
-          <i class="fab fa-instagram text-gray-700 group-hover:text-white"></i>
-        </a>
-        <a class="group w-11 h-11 flex items-center justify-center rounded-full bg-white/70 backdrop-blur shadow-lg hover:bg-blue-600 transition">
-          <i class="fab fa-linkedin-in text-gray-700 group-hover:text-white"></i>
-        </a>
-        <a class="group w-11 h-11 flex items-center justify-center rounded-full bg-white/70 backdrop-blur shadow-lg hover:bg-gray-900 transition">
-          <i class="fab fa-github text-gray-700 group-hover:text-white"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="space-y-6">
-      <h3 class="text-3xl font-bold text-cyan-600">Get in Touch</h3>
-
-      <div class="space-y-4 text-sm">
-        <p class="flex items-center gap-4">
-          <span class="text-xl">📞</span>
-          <a href="tel:9556222983" class="hover:text-cyan-600 transition">9556222983</a>
-        </p>
-
-        <p class="flex items-center gap-4">
-          <span class="text-xl">📧</span>
-          <a href="mailto:projectkart2@gmail.com" class="hover:text-cyan-600 transition">
-            projectkart2@gmail.com
-          </a>
-        </p>
-
-        <p class="flex items-center gap-4">
-          <span class="text-xl">📍</span>
-           Pubasasan, Uttara, Bhubaneswar, Odisha 751002
-        </p>
-      </div>
-
-      <!-- WhatsApp CTA -->
-      <a
-        href="https://wa.me/919556222983"
-        target="_blank"
-        class="inline-flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 hover:scale-105 text-white px-7 py-3 rounded-full shadow-xl transition"
-      >
-        <i class="fab fa-whatsapp text-xl"></i>
-        <span class="text-sm font-semibold">Chat on WhatsApp</span>
-      </a>
-    </div>
-
-    <!-- MAP -->
-    <div class="space-y-4">
-      <h3 class="text-3xl font-bold text-cyan-600">Our Location</h3>
-
-      <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/50">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3744.507717599596!2d85.85232237573676!3d20.196212515851187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19a1765c2a284f%3A0xad69171262f6edfc!2sprojectkart!5e0!3m2!1sen!2sin!4v1763640888879!5m2!1sen!2sin"
-          class="w-full h-[260px] grayscale hover:grayscale-0 transition duration-700"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Bottom Strip -->
-  <div class="relative border-t border-cyan-200 bg-white/70 backdrop-blur py-5 text-center text-xs text-gray-500">
-    © 2025 <span class="font-semibold text-cyan-600">ProjectKart</span> · Designed for innovators ⚡
-  </div>
-
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({ duration: 800, once: true });
-
-function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('hidden');
-}
-</script>
-
-
-<!-- ================= SCRIPT ================= -->
-<script>
-const rocket = document.getElementById("rocketBtn");
-const smokeBox = document.getElementById("smokeContainer");
-
-/* Show + Follow Scroll */
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const docH = document.body.scrollHeight - innerHeight;
-
-  rocket.classList.toggle("hidden", scrollY < 300);
-
-  const min = innerHeight * 0.2;
-  const max = innerHeight * 0.7;
-  rocket.style.top = max - (scrollY / docH) * (max - min) + "px";
-});
-
-/* Launch with smoke & confetti */
-rocket.addEventListener("click", () => {
-  rocket.classList.add("boost");
-  createSmoke();
-  window.scrollTo({ top: 0, behavior: "smooth" });
-
-  setTimeout(() => {
-    rocket.classList.remove("boost");
-    confettiBurst();
-  }, 900);
-});
-
-/* Blurred SVG Smoke Creation */
-function createSmoke() {
-  const rect = rocket.getBoundingClientRect();
-
-  for (let i = 0; i < 12; i++) {
-    const smoke = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    smoke.setAttribute("cx", 10 + Math.random()*6);
-    smoke.setAttribute("cy", 10 + Math.random()*6);
-    smoke.setAttribute("r", 6 + Math.random()*4);
-    smoke.classList.add("smoke-circle");
-
-    smoke.style.transform = `translate(${rect.left + 10}px, ${rect.top + 38}px)`;
-    smokeBox.appendChild(smoke);
-
-    // Remove after animation
-    setTimeout(() => smoke.remove(), 1000);
-  }
-}
-
-/* Confetti */
-function confettiBurst() {
-  const items = ["🎉","✨","🎊","💥"];
-  for (let i=0;i<30;i++){
-    const c = document.createElement("div");
-    c.className="confetti";
-    c.textContent = items[Math.floor(Math.random()*items.length)];
-    c.style.left = Math.random()*innerWidth + "px";
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),1200);
-  }
-}
-</script>
-
-
-
-
+    <!-- Sticky Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-header border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
+                    P
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-white">Project<span class="text-indigo-400">kart</span></span>
+                    <span class="block text-[10px] tracking-widest uppercase text-slate-400 font-semibold">Hardware R&D & Engineering</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#home" class="hover:text-indigo-400 transition">Home</a>
+                <a href="#capabilities" class="hover:text-indigo-400 transition">Capabilities</a>
+                <a href="#projects" class="hover:text-indigo-400 transition">Academic & Industrial</a>
+                <a href="#3dprinting" class="hover:text-indigo-400 transition">3D Printing</a>
+                <a href="#blog" class="hover:text-indigo-400 transition">Insights</a>
+                <a href="#faqs" class="hover:text-indigo-400 transition">FAQs</a>
+                <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20would%20like%20to%20discuss%20a%20hardware/project%20requirement." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/30 transition flex items-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                </a>
+                <a href="#contact" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/30 transition text-sm">
+                    Get Quote
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="lg:hidden text-slate-300 hover:text-white focus:outline-none text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-cardBg border-b border-slate-800 px-6 py-6 space-y-4 font-medium text-slate-300">
+            <a href="#home" class="block hover:text-indigo-400 transition py-1">Home</a>
+            <a href="#capabilities" class="block hover:text-indigo-400 transition py-1">Capabilities</a>
+            <a href="#projects" class="block hover:text-indigo-400 transition py-1">Academic & Industrial</a>
+            <a href="#3dprinting" class="block hover:text-indigo-400 transition py-1">3D Printing</a>
+            <a href="#blog" class="block hover:text-indigo-400 transition py-1">Insights</a>
+            <a href="#faqs" class="block hover:text-indigo-400 transition py-1">FAQs</a>
+            <a href="#contact" class="block text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/30">Get Quote / Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20need%20assistance%20with%20an%20electronics%20project%20/%20R%26D%20requirement." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/50 floating-whatsapp transition transform hover:scale-110" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Hero Section (Morphedo Style Product Engineering & R&D) -->
+    <section id="home" class="relative overflow-hidden hero-gradient pt-20 pb-28 lg:pt-32 lg:pb-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-indigo-950/90 border border-indigo-700/50 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-300">
+                        <span class="flex h-2 w-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                        End-to-End Product Engineering, R&D & IoT Development
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-[1.12]">
+                        Transforming Ideas Into <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-pink-400 bg-clip-text text-transparent">Smart Hardware Systems</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-300 font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Projectkart is your dedicated technology partner for hardware R&D, embedded IoT solutions, industrial automation, school & college final year projects, and precision 3D printing across India.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#contact" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/30 transition text-center">
+                            Start Your Project <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20discuss%20a%20custom%20hardware%20R%26D%20requirement." target="_blank" class="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-emerald-700/30 transition text-center flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats Bar -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">500+</div>
+                            <div class="text-xs sm:text-sm text-slate-400 font-medium">Projects Executed</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">100%</div>
+                            <div class="text-xs sm:text-sm text-slate-400 font-medium">Verified & Tested</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-extrabold text-white">Pan-India</div>
+                            <div class="text-xs sm:text-sm text-slate-400 font-medium">Secure Delivery</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Console -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+                        <div class="relative bg-cardBg border border-slate-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="text-xs text-indigo-400 font-mono">projectkart_rnd_core.ino</span>
+                            </div>
+                            
+                            <div class="space-y-3 font-mono text-xs sm:text-sm text-slate-300">
+                                <p class="text-indigo-300">// Embedded Systems & IoT Suite</p>
+                                <p><span class="text-pink-400">#include</span> &lt;ESP32_MQTT_Client.h&gt;</p>
+                                <p><span class="text-pink-400">#include</span> &lt;IndustrialSensors.h&gt;</p>
+                                <p class="text-slate-500">void setup() {</p>
+                                <p class="pl-4">Serial.begin(115200);</p>
+                                <p class="pl-4">initializeAutomationSystem();</p>
+                                <p class="pl-4">cloudTelemetrySync();</p>
+                                <p class="text-slate-500">}</p>
+                            </div>
+
+                            <div class="bg-slate-900/90 rounded-2xl p-4 border border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-3 bg-indigo-950 rounded-xl text-indigo-400 border border-indigo-800/50">
+                                        <i class="fa-solid fa-microchip text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-sm font-bold text-white">Hardware R&D Lab</div>
+                                        <div class="text-xs text-slate-400">PCB Design, Firmware & 3D Prototyping</div>
+                                    </div>
+                                </div>
+                                <span class="text-emerald-400 text-xs font-semibold px-2.5 py-1 bg-emerald-950/80 rounded-full border border-emerald-800/50">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Capabilities (Morphedo Style Services) -->
+    <section id="capabilities" class="py-24 bg-slate-950 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest uppercase text-indigo-400">What We Do</h2>
+                <h3 class="text-3xl sm:text-5xl font-extrabold text-white">End-to-End Product Engineering & R&D Services</h3>
+                <p class="text-slate-400 text-sm sm:text-base">We bridge the gap between concept, prototyping, and fully working production hardware.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Capability 1 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-950 border border-indigo-800/60 flex items-center justify-center text-indigo-400 text-2xl shadow-lg">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">Hardware R&D & PCB Design</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Custom schematic design, multi-layer PCB layout, component selection, and prototype fabrication tailored for microcontrollers (Arduino, ESP32, STM32).
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 pt-2">
+                        <li><i class="fa-solid fa-check text-indigo-400 mr-2"></i> Schematic & Gerber Design</li>
+                        <li><i class="fa-solid fa-check text-indigo-400 mr-2"></i> Component Sourcing & Assembly</li>
+                        <li><i class="fa-solid fa-check text-indigo-400 mr-2"></i> Firmware Development & Testing</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 2 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-violet-950 border border-violet-800/60 flex items-center justify-center text-violet-400 text-2xl shadow-lg">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">Industrial Automation & PLC Systems</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Robust industrial automation solutions, current detection monitors, vibro feeder controls, conveyor automation, and custom control panels.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 pt-2">
+                        <li><i class="fa-solid fa-check text-violet-400 mr-2"></i> Vibro Feeder & Relay Automation</li>
+                        <li><i class="fa-solid fa-check text-violet-400 mr-2"></i> Overload & Current Detection Units</li>
+                        <li><i class="fa-solid fa-check text-violet-400 mr-2"></i> SCADA & MQTT Telemetry Dashboards</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 3 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-950 border border-blue-800/60 flex items-center justify-center text-blue-400 text-2xl shadow-lg">
+                        <i class="fa-solid fa-wifi"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">Embedded IoT Solutions</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Connect remote assets to cloud dashboards. We integrate Wi-Fi, GSM/GPRS, GPS modules, and MQTT TCP gateways for real-time monitoring.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 pt-2">
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> ESP32 & GSM Remote Tracking</li>
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> Cloud Dashboard & App Integration</li>
+                        <li><i class="fa-solid fa-check text-blue-400 mr-2"></i> Low-power Sensor Node Design</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 4 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-950 border border-pink-800/60 flex items-center justify-center text-pink-400 text-2xl shadow-lg">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">3D Printing & Rapid Prototyping</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        High-precision FDM 3D printing utilizing Creality printers and top-grade PLA, PLA Pro, and PLA+ filaments for custom enclosures and mechanical parts.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 pt-2">
+                        <li><i class="fa-solid fa-check text-pink-400 mr-2"></i> Custom Electronics Enclosures</li>
+                        <li><i class="fa-solid fa-check text-pink-400 mr-2"></i> Mechanical Gears & Brackets</li>
+                        <li><i class="fa-solid fa-check text-pink-400 mr-2"></i> Fast 24-48 Hour Turnaround</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 5 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-950 border border-emerald-800/60 flex items-center justify-center text-emerald-400 text-2xl shadow-lg">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">School & College Electronics Projects</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Ready-to-submit B.Tech, M.Tech, Diploma, and School science exhibition models. Fully tested hardware with complete reports, source code, and PPT.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 pt-2">
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Fully Tested Working Models</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Complete Documentation & PPT</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Viva Guidance & Technical Support</li>
+                    </ul>
+                </div>
+
+                <!-- Capability 6 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-950 border border-amber-800/60 flex items-center justify-center text-amber-400 text-2xl shadow-lg">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">Pan-India Component Delivery</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Procure individual sensors, displays, relays, modules, and complete engineering kits securely delivered to your doorstep anywhere in India.
+                    </p>
+                    <ul class="space-y-2 text-xs text-slate-300 pt-2">
+                        <li><i class="fa-solid fa-check text-amber-400 mr-2"></i> Genuine Electronic Components</li>
+                        <li><i class="fa-solid fa-check text-amber-400 mr-2"></i> Secure Packaging & Tracking</li>
+                        <li><i class="fa-solid fa-check text-amber-400 mr-2"></i> Institutional & Bulk Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic & Industrial Projects Spotlight -->
+    <section id="projects" class="py-24 bg-darkBg border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-indigo-950/80 border border-indigo-700/50 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-300">
+                        <i class="fa-solid fa-lightbulb mr-1"></i> Proven Track Record
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Delivering Excellence Across Academic & Industrial Verticals</h3>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Whether you are a university student preparing for your final year viva or an industry leader seeking automated manufacturing feedback loops, Projectkart delivers precision engineering solutions.
+                    </p>
+                    
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 bg-cardBg border border-slate-800 p-4 rounded-2xl">
+                            <div class="p-3 bg-indigo-950 text-indigo-400 rounded-xl">
+                                <i class="fa-solid fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Academic Project Excellence</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Custom IoT weather stations, solar trackers, automated irrigation, robotics, and smart vehicle prototypes.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 bg-cardBg border border-slate-800 p-4 rounded-2xl">
+                            <div class="p-3 bg-violet-950 text-violet-400 rounded-xl">
+                                <i class="fa-solid fa-industry text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Industrial Automation & R&D</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Vibro feeder automation, MQTT TCP gateways, current detection systems, and industrial sensor telemetry.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20discuss%20my%20project%20requirements." target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-7 py-3.5 rounded-xl shadow-lg shadow-indigo-600/30 transition text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Discuss Project on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-cardBg border border-slate-800 p-8 rounded-3xl shadow-2xl relative">
+                    <div class="absolute top-4 right-4 bg-slate-900 px-3 py-1 rounded-full text-xs font-mono text-indigo-400 border border-slate-800">
+                        Projectkart R&D Suite
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-file-invoice text-indigo-400"></i> Request Custom Project Quote
+                    </h4>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Your project request has been submitted to Soumya Ranjan at Projectkart. We will contact you shortly via phone/WhatsApp.');" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name *</label>
+                            <input type="text" required placeholder="Enter your full name" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Phone / WhatsApp *</label>
+                                <input type="tel" required placeholder="+91 9337630692" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Project Category *</label>
+                                <select class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                                    <option>College / School Electronics Project</option>
+                                    <option>Industrial Automation / PLC</option>
+                                    <option>Embedded IoT Solution</option>
+                                    <option>3D Printing & Prototyping</option>
+                                    <option>Custom Hardware R&D</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Project Specifications / Requirements *</label>
+                            <textarea rows="3" required placeholder="Describe what you want to build, features required, and deadline..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 rounded-xl transition text-sm shadow-lg shadow-indigo-600/30">
+                            Submit Project Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Printing & Rapid Prototyping Section -->
+    <section id="3dprinting" class="py-24 bg-slate-950 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest uppercase text-pink-400">Rapid Prototyping</h2>
+                <h3 class="text-3xl sm:text-5xl font-extrabold text-white">High-Precision 3D Printing Services</h3>
+                <p class="text-slate-400 text-sm sm:text-base">Equipped with Creality 3D printers and premium filaments to manufacture durable parts for your engineering models.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="text-pink-400 text-3xl mb-2"><i class="fa-solid fa-cube"></i></div>
+                    <h4 class="text-xl font-bold text-white">Creality 3D Printing</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        High-accuracy FDM 3D printing for rapid prototyping, functional test models, and intricate mechanical components.
+                    </p>
+                </div>
+
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="text-indigo-400 text-3xl mb-2"><i class="fa-solid fa-layer-group"></i></div>
+                    <h4 class="text-xl font-bold text-white">Premium Filaments</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        We use top-grade PLA, PLA Pro, and PLA+ filaments in white, black, grey, and beige brown for optimal strength and finish.
+                    </p>
+                </div>
+
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-8 card-glow space-y-4">
+                    <div class="text-emerald-400 text-3xl mb-2"><i class="fa-solid fa-bolt"></i></div>
+                    <h4 class="text-xl font-bold text-white">Fast Pan-India Dispatch</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Quick 24-48 hour print turnaround with secure packaging and express delivery anywhere in India.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & Engineering Insights -->
+    <section id="blog" class="py-24 bg-darkBg border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest uppercase text-indigo-400">Knowledge Hub</h2>
+                <h3 class="text-3xl sm:text-5xl font-extrabold text-white">Projectkart Engineering Blog</h3>
+                <p class="text-slate-400 text-sm sm:text-base">Insights, guides, and technical tutorials on embedded systems, IoT gateways, and 3D printing tips.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden card-glow flex flex-col">
+                    <div class="h-48 bg-gradient-to-r from-indigo-950 to-violet-950 flex items-center justify-center p-6 text-center border-b border-slate-800">
+                        <span class="text-white font-bold text-lg"><i class="fa-solid fa-wifi text-indigo-300 mr-2"></i> ESP32 IoT Gateways</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <span class="text-[10px] uppercase font-bold tracking-wider text-indigo-400 bg-indigo-950 px-2.5 py-1 rounded">IoT & Automation</span>
+                            <h4 class="text-lg font-bold text-white">Designing Reliable MQTT TCP Gateways for Industrial Sensor Telemetry</h4>
+                            <p class="text-xs text-slate-400 line-clamp-3">How we architected robust MQTT communication frameworks for industrial vibro feeders and automated monitoring nodes...</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs text-slate-500">
+                            <span><i class="fa-regular fa-calendar mr-1"></i> March 2026</span>
+                            <span class="text-indigo-400 font-semibold hover:underline cursor-pointer" onclick="alert('Article Summary: Robust MQTT gateways require automated reconnect sequences, watchdog timers, and structured payload formatting.')">Read Article &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden card-glow flex flex-col">
+                    <div class="h-48 bg-gradient-to-r from-violet-950 to-pink-950 flex items-center justify-center p-6 text-center border-b border-slate-800">
+                        <span class="text-white font-bold text-lg"><i class="fa-solid fa-cube text-pink-300 mr-2"></i> 3D Printing Pro Tips</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <span class="text-[10px] uppercase font-bold tracking-wider text-pink-400 bg-pink-950 px-2.5 py-1 rounded">Prototyping</span>
+                            <h4 class="text-lg font-bold text-white">PLA vs PLA+ vs PLA Pro: Choosing the Right Filament for Electronics Casings</h4>
+                            <p class="text-xs text-slate-400 line-clamp-3">A practical breakdown of tensile strength, thermal properties, and layer adhesion when 3D printing custom PCB enclosures...</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs text-slate-500">
+                            <span><i class="fa-regular fa-calendar mr-1"></i> June 2026</span>
+                            <span class="text-indigo-400 font-semibold hover:underline cursor-pointer" onclick="alert('Article Summary: PLA+ offers superior impact resistance and flexibility over standard PLA, preventing snap-fit enclosure clips from breaking.')">Read Article &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="bg-cardBg border border-slate-800 rounded-2xl overflow-hidden card-glow flex flex-col">
+                    <div class="h-48 bg-gradient-to-r from-blue-950 to-emerald-950 flex items-center justify-center p-6 text-center border-b border-slate-800">
+                        <span class="text-white font-bold text-lg"><i class="fa-solid fa-graduation-cap text-emerald-300 mr-2"></i> Final Year Guide</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-400 bg-emerald-950 px-2.5 py-1 rounded">Academic</span>
+                            <h4 class="text-lg font-bold text-white">Top 10 Engineering Final Year Project Ideas With High Evaluation Score</h4>
+                            <p class="text-xs text-slate-400 line-clamp-3">Looking for a standout B.Tech or Diploma project? Discover solar IoT monitors, automated safety systems, and more...</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs text-slate-500">
+                            <span><i class="fa-regular fa-calendar mr-1"></i> July 2026</span>
+                            <span class="text-indigo-400 font-semibold hover:underline cursor-pointer" onclick="alert('Article Summary: Evaluators look for real-world utility, clear circuit diagrams, and working cloud telemetry dashboards.')">Read Article &rarr;</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="py-24 bg-slate-950 border-t border-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <h2 class="text-xs font-bold tracking-widest uppercase text-indigo-400">Got Questions?</h2>
+                <h3 class="text-3xl sm:text-5xl font-extrabold text-white">Frequently Asked Questions</h3>
+                <p class="text-slate-400 text-sm sm:text-base">Everything you need to know about our hardware R&D services, academic projects, and shipping.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-6">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center text-left font-bold text-white text-base focus:outline-none">
+                        <span>Do you ship project kits and hardware all over India?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800 mt-4">
+                        Yes! We securely package and ship our electronics project kits, custom 3D printed enclosures, and sensors pan-India via trusted courier partners with tracking.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-6">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center text-left font-bold text-white text-base focus:outline-none">
+                        <span>Are college and school project kits delivered fully working and tested?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800 mt-4">
+                        Absolute-ly. Every single academic project undergoes rigorous testing before dispatch. We also provide full source code, circuit schematics, and detailed documentation for your presentation.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-6">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center text-left font-bold text-white text-base focus:outline-none">
+                        <span>How can I order 3D printing services?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800 mt-4">
+                        You can send us your .STL file or dimensional requirements via WhatsApp (+91 9337630692) or email (soumyaranjann89@gmail.com). We will provide a quick cost estimate and print it on our high-precision printers.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-cardBg border border-slate-800 rounded-2xl p-6">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center text-left font-bold text-white text-base focus:outline-none">
+                        <span>Can you build custom industrial automation or R&D prototypes?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800 mt-4">
+                        Yes, our core expertise includes industrial automation systems, custom microcontroller programming (Arduino, ESP32, STM32), sensor telemetry, and IoT gateway development for businesses across India.
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                    <div class="bg-cardBg border border-slate-800 rounded-2xl p-6">
+                    <button onclick="toggleFaq(this)" class="w-full flex justify-between items-center text-left font-bold text-white text-base focus:outline-none">
+                        <span>How do I contact Projectkart directly?</span>
+                        <i class="fa-solid fa-chevron-down text-indigo-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden pt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800 mt-4">
+                        You can reach us directly by calling or messaging on WhatsApp at +91 9337630692 or by emailing soumyaranjann89@gmail.com. We operate out of Bhubaneswar, Odisha.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Quotation Section -->
+    <section id="contact" class="py-24 relative bg-gradient-to-b from-slate-950 to-darkBg border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-indigo-950/80 border border-indigo-700/50 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-300">
+                        Get In Touch
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Build Your Project With Projectkart</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Whether you need a college electronics project, industrial automation solution, IoT integration, or custom 3D printing, Soumya Ranjan and our engineering team are ready to assist you.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-indigo-950 border border-indigo-800/60 rounded-xl text-indigo-400">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Location</h4>
+                                <p class="text-xs text-slate-400">Bhubaneswar, Odisha, India - 751024</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-indigo-950 border border-indigo-800/60 rounded-xl text-indigo-400">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Email Us</h4>
+                                <p class="text-xs text-slate-400">soumyaranjann89@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-indigo-950 border border-indigo-800/60 rounded-xl text-indigo-400">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Phone / WhatsApp</h4>
+                                <p class="text-xs text-slate-400">+91 9337630692</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20chat%20regarding%20an%20inquiry." target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-600/30 transition text-sm">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Direct WhatsApp Chat
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-cardBg border border-slate-800 p-8 rounded-3xl shadow-2xl">
+                    <h4 class="text-xl font-bold text-white mb-6">Send an Inquiry or Quote Request</h4>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent successfully to Soumya Ranjan at Projectkart. We will get back to you shortly.');" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name *</label>
+                                <input type="text" required placeholder="Soumya Ranjan" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Phone / WhatsApp *</label>
+                                <input type="tel" required placeholder="+91 9337630692" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address *</label>
+                                <input type="email" required placeholder="soumyaranjann89@gmail.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-1">Service Required *</label>
+                                <select class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                                    <option>College / School Electronics Project</option>
+                                    <option>Industrial Automation / PLC</option>
+                                    <option>Embedded IoT Solution</option>
+                                    <option>3D Printing & Prototyping</option>
+                                    <option>Custom Hardware R&D</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Project Details / Message *</label>
+                            <textarea rows="4" required placeholder="Describe your specifications, timeline, or requirements..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-xl shadow-indigo-600/30">
+                            <i class="fa-solid fa-paper-plane mr-2"></i> Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-black text-lg">P</div>
+                        <span class="text-xl font-bold text-white">Project<span class="text-indigo-400">kart</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Hardware R&D, IoT development, industrial automation, school/college projects, and 3D printing services across India.
+                    </p>
+                    <div class="flex space-x-4 text-lg">
+                        <a href="https://wa.me/919337630692" target="_blank" class="text-slate-400 hover:text-emerald-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="mailto:soumyaranjann89@gmail.com" class="text-slate-400 hover:text-indigo-400 transition"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-indigo-400 transition">Home</a></li>
+                        <li><a href="#capabilities" class="hover:text-indigo-400 transition">Capabilities</a></li>
+                        <li><a href="#projects" class="hover:text-indigo-400 transition">Academic & Industrial</a></li>
+                        <li><a href="#3dprinting" class="hover:text-indigo-400 transition">3D Printing</a></li>
+                        <li><a href="#blog" class="hover:text-indigo-400 transition">Insights</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Services</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><span class="hover:text-indigo-400 cursor-pointer">Hardware R&D & PCB Design</span></li>
+                        <li><span class="hover:text-indigo-400 cursor-pointer">Industrial Automation Systems</span></li>
+                        <li><span class="hover:text-indigo-400 cursor-pointer">Embedded IoT Solutions</span></li>
+                        <li><span class="hover:text-indigo-400 cursor-pointer">Creality 3D Printing</span></li>
+                        <li><span class="hover:text-indigo-400 cursor-pointer">College Final Year Projects</span></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Contact Info</h5>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-3">
+                        <i class="fa-solid fa-phone text-indigo-400 mr-1.5"></i> +91 9337630692<br>
+                        <i class="fa-solid fa-envelope text-indigo-400 mr-1.5"></i> soumyaranjann89@gmail.com<br>
+                        <i class="fa-solid fa-location-dot text-indigo-400 mr-1.5"></i> Bhubaneswar, Odisha, India
+                    </p>
+                    <div class="text-xs text-emerald-400 font-semibold">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Pan-India Shipping Available
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Projectkart (Foundered by Soumya Ranjan Nayak). All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-400">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for Mobile Menu and FAQs -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+    </script>
 </body>
 </html>
