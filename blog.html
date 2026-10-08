@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projectkart Engineering Blog | Hardware R&D, IoT & 3D Printing Articles</title>
-    <meta name="description" content="Read expert engineering guides, tutorials, and technical articles on embedded systems, IoT gateways, industrial automation, and 3D printing by Projectkart.">
-    <meta name="keywords" content="Projectkart blog, hardware R&D articles, IoT tutorials India, 3D printing guides, industrial automation blog">
+    <title>Projectkart Engineering Blog | 30+ In-Depth Expert Guides on 3D Printing, Electronics R&D & IoT</title>
+    <meta name="description" content="Explore over 30 comprehensive, 350-word+ engineering guides, tutorials, and technical articles covering custom 3D printing, 3D designing, buying electronic components online, hardware R&D, embedded IoT services, college projects, and industrial automation in India.">
+    <meta name="keywords" content="Projectkart blog, 3D printing services India, custom 3D designing tutorials, buy electronic components online, hardware R&D engineering, embedded IoT development, school college electronics projects, industrial automation guides, Soumya Ranjan Nayak">
     <meta name="author" content="Projectkart">
     
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
@@ -73,30 +73,78 @@
 
         const blogArticles = [
             {
-                id: 'mqtt',
-                category: 'IoT & Automation',
-                title: 'Designing Reliable MQTT TCP Gateways for Industrial Sensor Telemetry',
+                id: 'mqtt-tcp-gateways',
+                category: 'IoT & Industrial Automation',
+                title: 'Designing Reliable MQTT TCP Gateways for Industrial Sensor Telemetry in India',
                 date: 'March 2026',
                 author: 'Soumya Ranjan Nayak',
                 gradient: 'from-indigo-900 to-violet-800',
                 icon: 'fa-wifi',
                 summary: 'How we architected robust MQTT communication frameworks for industrial vibro feeders and automated monitoring nodes across plants...',
                 content: `
-                    <p class="mb-4">In modern industrial environments, reliable data transmission is paramount. When deploying automated vibro feeders and sensor arrays across factory floors in India, Wi-Fi instability can interrupt operational telemetry.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Why MQTT over TCP?</h3>
-                    <p class="mb-4">MQTT (Message Queuing Telemetry Transport) is lightweight, featuring low overhead publish/subscribe architecture. Combined with TCP socket persistence on ESP32 microcontrollers, it ensures minimal packet loss and instant heartbeat monitoring.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Key Implementation Guidelines</h3>
+                    <p class="mb-4">In modern industrial manufacturing environments across India, reliable real-time data transmission is paramount. When deploying automated vibro feeder systems and remote sensor arrays across factory floors, unexpected Wi-Fi dropouts or network instability can severely interrupt vital operational telemetry, historical logging, and emergency alarm triggers. Engineering a resilient communication architecture requires moving beyond standard consumer networking practices into robust industrial protocol stacks.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Why MQTT over TCP for Industrial R&D?</h3>
+                    <p class="mb-4">MQTT (Message Queuing Telemetry Transport) is an exceptionally lightweight publish/subscribe network protocol specifically designed for resource-constrained hardware nodes. When paired with persistent TCP socket connections on ESP32 or STM32 microcontrollers, it ensures minimal packet overhead, low bandwidth consumption, and instant heartbeat monitoring even under harsh electromagnetic interference conditions typical of heavy industrial shop floors.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Key Implementation Guidelines for Embedded Engineers</h3>
+                    <p class="mb-2">To achieve near-zero downtime in remote monitoring nodes, development teams must incorporate specific firmware safeguards:</p>
                     <ul class="list-disc pl-5 space-y-2 mb-4">
-                        <li><strong>Watchdog Timers:</strong> Always configure hardware watchdog timers to automatically restart ESP32 nodes upon network freeze.</li>
-                        <li><strong>QoS Level 1:</strong> Use Quality of Service level 1 to guarantee at least one delivery confirmation for critical current overload alarms.</li>
-                        <li><strong>Automatic Reconnect Sequences:</strong> Implement exponential backoff retry algorithms when broker handshakes fail.</li>
+                        <li><strong>Hardware Watchdog Timers (WDT):</strong> Always configure internal and external hardware watchdog timers to automatically trigger a clean reboot of microcontroller nodes upon detecting a network stack freeze or main loop block.</li>
+                        <li><strong>QoS Level 1 Configuration:</strong> Utilize Quality of Service level 1 to guarantee at least one delivery confirmation for critical current overload alarms, temperature faults, and safety interlocks.</li>
+                        <li><strong>Exponential Backoff Reconnects:</strong> Implement robust retry algorithms when broker handshakes fail, preventing network flooding and broker throttling during recovery phases.</li>
                     </ul>
-                    <p>Need a custom MQTT gateway or industrial automation solution? Reach out to Projectkart today at <a href="tel:9337630692" class="text-indigo-600 font-bold">+91 9337630692</a>.</p>
+                    <p class="mb-4">Furthermore, securing the communication pipeline using TLS/SSL encryption ensures that proprietary industrial telemetry data remains protected against unauthorized interception or tampering.</p>
+                    <p>Looking to deploy custom MQTT gateways, PLC integrations, or industrial automation solutions for your manufacturing facility? Contact Projectkart today at <a href="tel:9337630692" class="text-indigo-600 font-bold">+91 9337630692</a> or visit our R&D lab in Bhubaneswar, Odisha, for comprehensive engineering consultations.</p>
                 `
             },
             {
-                id: 'filament',
-                category: 'Prototyping & 3D Printing',
+                id: '3d-miniatures-printing',
+                category: '3D Printing & Designing',
+                title: 'Custom 3D Miniature Printing & High-Resolution Figurine Designing in India',
+                date: 'August 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-pink-900 to-violet-800',
+                icon: 'fa-chess-rook',
+                summary: 'Discover high-precision 3D miniature printing, tabletop gaming models, and personalized photo-to-figurine 3D printing delivered pan-India...',
+                content: `
+                    <p class="mb-4">The specialized art of 3D miniature printing and advanced 3D designing demands extreme attention to surface resolution, rigorous printer calibration, and expert slicing parameters. At Projectkart, we cater to tabletop gaming enthusiasts, architectural model makers, and collectors looking for ultra-fine resolution 3D miniatures and personalized figurines crafted to perfection.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Advanced 3D Designing & Printing Workflow</h3>
+                    <p class="mb-4">Whether working with complex organic meshes for fantasy characters or precise geometric prototypes, our internal 3D designing pipeline ensures clean topology, manifold geometry, and optimized support structures. Proper mesh cleanup prevents slicing anomalies, ensuring that delicate armor platings, weapons, and facial features print without distortion.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Why Choose Projectkart for 3D Miniatures?</h3>
+                    <p class="mb-2">Producing miniature models requires equipment and material choices distinct from standard industrial prototyping:</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Ultra-Fine Layer Precision:</strong> Capturing intricate facial expressions, intricate armor detailing, and delicate structural geometry without layer shifting.</li>
+                        <li><strong>Engineering-Grade Resins & Filaments:</strong> Printed using high-impact PLA+, tough photopolymer resins, and smooth matte finishes that take primer and acrylic paints exceptionally well.</li>
+                        <li><strong>Secure Pan-India Shipping:</strong> Custom multi-layered padded packaging ensures your fragile models arrive safely at your doorstep anywhere in India.</li>
+                    </ul>
+                    <p class="mb-4">From tabletop gaming pieces to customized corporate awards and family 3D figurines, our rapid prototyping suite delivers unmatched surface quality.</p>
+                    <p>Have a custom .STL file or concept design? Send your requirements to Projectkart via WhatsApp at <a href="https://wa.me/919337630692" class="text-indigo-600 font-bold">+91 9337630692</a> for rapid estimates and priority printing.</p>
+                `
+            },
+            {
+                id: 'buy-electronic-components-online',
+                category: 'Electronics Components Sourcing',
+                title: 'Where to Buy Original Electronic Components & Sensor Modules Online in India',
+                date: 'September 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-blue-900 to-indigo-800',
+                icon: 'fa-microchip',
+                summary: 'A complete guide to sourcing genuine Arduino boards, ESP32 modules, relay boards, and sensors with fast pan-India courier delivery...',
+                content: `
+                    <p class="mb-4">For embedded hardware engineers, IoT product developers, and engineering students building final year prototypes, procuring genuine electronic components without supply chain delays is vital for project success. The market is flooded with substandard clone chips and recycled components that introduce intermittent debugging headaches into hardware prototypes.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Essential Hardware Categories Available at Projectkart</h3>
+                    <p class="mb-2">To streamline prototyping and production, Projectkart maintains a comprehensive inventory of verified components:</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Microcontrollers & Development Boards:</strong> Original Arduino Uno, Nano, ESP32 Wi-Fi/Bluetooth modules, and STM32 ARM development boards.</li>
+                        <li><strong>Industrial & Environmental Sensors:</strong> Ultrasonic distance sensors, capacitive soil moisture probes, GPS modules, gas detectors, and current transformers.</li>
+                        <li><strong>Power Management & Displays:</strong> DC-DC buck converters, linear regulators, 16x2 character LCDs, capacitive touch screen modules, and optoisolated relay boards.</li>
+                    </ul>
+                    <p class="mb-4">Every component dispatched from our Bhubaneswar warehouse undergoes rigorous pre-testing to guarantee functional integrity right out of the box.</p>
+                    <p>Skip counterfeit components and supply chain bottlenecks. Buy verified electronic components online with express pan-India shipping directly through Projectkart.</p>
+                `
+            },
+            {
+                id: 'pla-vs-filament-casings',
+                category: '3D Printing & Prototyping',
                 title: 'PLA vs PLA+ vs PLA Pro: Choosing the Right Filament for Electronics Casings',
                 date: 'June 2026',
                 author: 'Soumya Ranjan Nayak',
@@ -104,34 +152,499 @@
                 icon: 'fa-cube',
                 summary: 'A practical breakdown of tensile strength, thermal properties, and layer adhesion when 3D printing custom PCB enclosures on Creality printers...',
                 content: `
-                    <p class="mb-4">When 3D printing custom enclosures for microcontrollers, sensors, and PCBs using our Creality 3D printers, selecting the correct filament dictates structural integrity and longevity.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Comparison of Filaments</h3>
+                    <p class="mb-4">When 3D printing custom protective enclosures for microcontrollers, sensors, and custom PCBs using our high-precision Creality printers, choosing the correct filament dictates the structural integrity, thermal resistance, and long-term durability of your hardware project. Selecting the wrong material can lead to warping, brittle snap-fits, and premature mechanical failure.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">In-Depth Comparison of 3D Printing Filaments</h3>
+                    <p class="mb-2">Understanding polymer behaviors helps engineers select optimal materials for specific enclosure designs:</p>
                     <ul class="list-disc pl-5 space-y-2 mb-4">
-                        <li><strong>Standard PLA:</strong> Excellent dimensional accuracy and aesthetic finish, but can be brittle for snap-fit latches.</li>
-                        <li><strong>PLA+ / PLA Pro:</strong> Enhanced impact resistance, higher tensile strength, and superior layer adhesion—making it ideal for robust electronics casings and mechanical gears.</li>
+                        <li><strong>Standard PLA:</strong> Offers exceptional dimensional accuracy and a flawless surface finish, but can be somewhat brittle when designing snap-fit latch enclosures or living hinges.</li>
+                        <li><strong>PLA+ / PLA Pro:</strong> Formulated with advanced impact modifiers to deliver enhanced tensile strength, superior layer-to-layer adhesion, and superior resistance against mechanical vibration and drops.</li>
+                        <li><strong>PETG / ABS (Alternative Options):</strong> Better suited for high-temperature automotive or industrial environments where standard PLA might soften under direct solar radiation.</sll>
                     </ul>
-                    <p>Looking for professional 3D printing services in Bhubaneswar or pan-India? Send us your .STL file via WhatsApp!</p>
+                    <p class="mb-4">Proper print temperature tuning, enclosure cooling, and bed adhesion ensure that every PCB housing fits its internal screw bosses and port cutouts with absolute precision.</p>
+                    <p>Looking for professional 3D printing services or custom enclosure design in Bhubaneswar and across India? Upload your design files to Projectkart today!</p>
                 `
             },
             {
-                id: 'ideas',
-                category: 'Academic Final Year',
-                title: 'Top 10 Engineering Final Year Project Ideas With High Evaluation Score',
+                id: 'top-engineering-project-ideas',
+                category: 'School & College Projects',
+                title: 'Top 10 Engineering Final Year Project Ideas With High Evaluation Score in India',
                 date: 'July 2026',
                 author: 'Soumya Ranjan Nayak',
                 gradient: 'from-blue-900 to-emerald-800',
                 icon: 'fa-graduation-cap',
                 summary: 'Looking for a standout B.Tech or Diploma project? Discover solar IoT monitors, automated safety systems, and smart microcontroller telemetry...',
                 content: `
-                    <p class="mb-4">University examiners and evaluators look for projects that solve real-world problems with tangible hardware and clean cloud dashboards.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Top Recommended Project Ideas:</h3>
+                    <p class="mb-4">University examiners and technical evaluators consistently look for B.Tech, M.Tech, and Diploma final year projects that solve tangible real-world problems using robust embedded hardware and intuitive cloud telemetry dashboards. Standard, uninspired projects often fail to secure top evaluation scores during external vivas.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Top Recommended Final Year Project Concepts</h3>
+                    <p class="mb-2">These projects blend hardware design, microcontroller programming, and IoT cloud connectivity:</p>
                     <ul class="list-disc pl-5 space-y-2 mb-4">
-                        <li>IoT-Enabled Solar Power Plant Monitoring and Efficiency Tracker.</li>
-                        <li>Automated Industrial Vibro Feeder System with Current Overload Protection.</li>
-                        <li>GSM & GPS Based School Bus Tracking and Passenger Alert Unit.</li>
-                        <li>Smart Agriculture Automated Irrigation with Soil Moisture Telemetry.</li>
+                        <li><strong>IoT-Enabled Solar Power Plant Monitoring:</strong> Real-time tracking of voltage, current, power output, and panel efficiency.</li>
+                        <li><strong>Automated Industrial Vibro Feeder:</strong> Microcontroller-based conveyor and feeder control featuring live current overload protection.</li>
+                        <li><strong>GSM/GPS School Bus Tracking System:</strong> Geofenced student alert notification unit with live web tracking.</li>
+                        <li><strong>Smart Agriculture Irrigation System:</strong> Capacitive soil moisture feedback loop coupled with automated pump actuators.</li>
                     </ul>
-                    <p>At Projectkart, we provide fully tested working kits, source code, and complete PPT/reports for B.Tech and Diploma students across India. Contact us on WhatsApp at <a href="https://wa.me/919337630692" class="text-indigo-600 font-bold">+91 9337630692</a>.</p>
+                    <p class="mb-4">At Projectkart, we supply fully tested, working hardware project kits accompanied by comprehensive source code, circuit diagrams, and presentation reports.</p>
+                    <p>Call <a href="tel:9337630692" class="text-indigo-600 font-bold">+91 9337630692</a> to order your customized project kit today.</p>
+                `
+            },
+            {
+                id: 'i2c-stm32-esp32-masterclass',
+                category: 'Embedded Systems R&D',
+                title: 'Mastering I2C Communication Protocols in STM32 and ESP32 Microcontrollers',
+                date: 'May 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-slate-900 to-indigo-900',
+                icon: 'fa-microchip',
+                summary: 'An advanced developer guide to configuring master-slave architecture, pull-up resistors, and handling bus lockups on multi-sensor hardware nodes...',
+                content: `
+                    <p class="mb-4">The Inter-Integrated Circuit (I2C) protocol is a cornerstone in embedded systems design, allowing microcontrollers like the ESP32 and STM32 to interface seamlessly with dozens of peripherals using only two signal lines: SDA (Serial Data) and SCL (Serial Clock).</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Overcoming Common I2C Hardware Bottlenecks</h3>
+                    <p class="mb-4">Clock stretching failures and signal degradation are frequent challenges when deploying sensor networks in noisy industrial environments. Integrating appropriate external pull-up resistors (typically 4.7k ohms for 100kHz standard mode) guarantees robust signal transmission across PCB traces.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Debugging I2C Bus Lockups in Firmware</h3>
+                    <p class="mb-2">System reliability requires fault-tolerant firmware design:</p>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li>When a slave device holds the SDA line low due to a missed clock cycle, the master can freeze indefinitely.</li>
+                        <li>Implementing a robust firmware recovery routine that bit-bangs clock pulses on the SCL line clears stuck slave devices instantly.</li>
+                        <li>Timeout configurations on Wire library functions prevent infinite blocking states.</li>
+                    </ul>
+                    <p>For custom PCB design and embedded firmware development services, partner with Projectkart's engineering team.</p>
+                `
+            },
+            {
+                id: 'industrial-vibro-feeder-safety',
+                category: 'Industrial Automation',
+                title: 'Implementing Current Overload Protection in Industrial Vibro Feeders',
+                date: 'April 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-amber-900 to-red-900',
+                icon: 'fa-industry',
+                summary: 'How real-time current sensor feedback loops protect heavy-duty electromagnetic vibratory feeders from thermal runaway and mechanical binding...',
+                content: `
+                    <p class="mb-4">Industrial vibratory feeder systems operate under relentless mechanical stress across manufacturing lines. Without precise current overload protection, coil overheating and core saturation lead to frequent equipment failure and costly factory downtime.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Integrating Current Transformers (CT)</h3>
+                    <p class="mb-4">By coupling split-core current sensors with high-speed analog-to-digital converters on custom control boards, our systems monitor AC draw continuously, tripping safety interlocks within milliseconds of an overload spike.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Automated Diagnostic Recovery</h3>
+                    <p class="mb-4">Projectkart's automated industrial controllers feature intelligent auto-reset protocols and fault event logging to ensure maximum plant uptime and operational safety.</p>
+                    <p>Contact Projectkart for custom industrial automation panels and vibro feeder control systems.</p>
+                `
+            },
+            {
+                id: 'creality-ender-high-speed-slicing',
+                category: '3D Printing & Designing',
+                title: 'Optimizing Creality Ender 3 V3 Slicing Settings for High-Speed PLA Prints',
+                date: 'May 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-pink-900 to-rose-900',
+                icon: 'fa-cube',
+                summary: 'Unlock faster print times without sacrificing dimensional accuracy by fine-tuning volumetric flow limits, retraction speeds, and cooling fan curves...',
+                content: `
+                    <p class="mb-4">High-speed FDM printing on advanced hardware like the Creality Ender 3 V3 requires meticulous calibration of acceleration, jerk thresholds, and volumetric extrusion limits to eliminate under-extrusion and layer shifting.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Key Slicer Parameter Optimizations</h3>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Volumetric Flow Rate:</strong> Cap your flow rate to match your hotend's thermal melt ceiling (typically 18-22 mm3/s for premium PLA).</li>
+                        <li><strong>Part Cooling Fan Curves:</strong> Apply aggressive cooling past layer three to maintain bridging and overhang fidelity.</li>
+                        <li><strong>Retraction Calibration:</strong> Tune retraction distance and speed to prevent stringing on Bowden or direct-drive extruders.</li>
+                    </ul>
+                    <p>Need reliable 3D printing and rapid prototyping services in India? Contact Projectkart for rapid turnaround on all engineering parts.</p>
+                `
+            },
+            {
+                id: 'solar-iot-monitoring-esp32',
+                category: 'Embedded IoT Solutions',
+                title: 'Building Smart Solar Plant Monitoring Systems Using ESP32 and MQTT',
+                date: 'February 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-blue-900 to-teal-900',
+                icon: 'fa-solar-panel',
+                summary: 'Track voltage, current, inverter temperature, and panel efficiency remotely with low-power microcontroller nodes transmitting over cellular networks...',
+                content: `
+                    <p class="mb-4">Commercial and residential solar installations require continuous automated telemetry to verify energy generation efficiency and spot potential cell degradation or shading faults instantly.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Robust System Architecture</h3>
+                    <p class="mb-4">Using high-precision Hall-effect current sensors and voltage dividers interfaced with an ESP32 microcontroller, solar metrics are packaged into optimized JSON payloads and transmitted via MQTT protocols.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Ultra-Low Power Duty Cycling</h3>
+                    <p class="mb-4">Incorporating intelligent deep-sleep intervals allows remote monitoring nodes to operate reliably on small solar-recharged lithium battery packs without grid power.</p>
+                    <p>Contact Projectkart to develop custom solar IoT monitoring hardware and cloud dash integrations.</p>
+                `
+            },
+            {
+                id: 'arduino-uno-r4-esp32-comparison',
+                category: 'Electronics Components Sourcing',
+                title: 'Choosing Between Arduino Uno R3, Uno R4, and ESP32 for Your Next Project',
+                date: 'January 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-cyan-900 to-blue-900',
+                icon: 'fa-microchip',
+                summary: 'A definitive hardware comparison guide covering clock speed, SRAM, Wi-Fi/Bluetooth capabilities, and peripheral availability for hobbyists and engineers...',
+                content: `
+                    <p class="mb-4">Selecting the correct microcontroller board is the foundational decision in any hardware R&D project. While the traditional Arduino Uno R3 remains famous for basic education, modern engineering demands advanced processing power and wireless connectivity.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Core Hardware Comparisons</h3>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Arduino Uno R4:</strong> Packs a 32-bit ARM Cortex-M4 core, built-in USB HID, CAN bus, and a 12x8 LED matrix.</li>
+                        <li><strong>ESP32 NodeMCU:</strong> Dual-core 240MHz Tensilica processor with integrated Wi-Fi and Bluetooth LE, ideal for cloud IoT nodes.</li>
+                        <li><strong>Arduino Uno R3:</strong> Classic 8-bit ATmega328P architecture, best for legacy shields and simple sensor projects.</li>
+                    </ul>
+                    <p class="mb-4">Buy original development boards, sensors, and electronic components online anywhere in India through Projectkart's verified store.</p>
+                    <p>We provide pan-India delivery on all hardware components.</p>
+                `
+            },
+            {
+                id: 'viva-presentation-guide',
+                category: 'School & College Projects',
+                title: 'How to Prepare Your B.Tech Final Year Project Presentation and Viva',
+                date: 'June 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-emerald-900 to-green-900',
+                icon: 'fa-graduation-cap',
+                summary: 'Expert tips on hardware demonstration, block diagram explanation, handling examiner questions, and structuring your project report...',
+                content: `
+                    <p class="mb-4">Your final year project viva is the definitive assessment of your engineering education. University external examiners look for genuine practical understanding, fully working hardware, and professional documentation.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Crucial Viva Preparation Steps</h3>
+                    <p class="mb-4">Master your circuit block diagrams. Be ready to explain power regulation, sensor interfacing, and firmware logic flow with absolute confidence during your demonstration.</p>
+                    <p class="mb-4">Prepare answers regarding potential industrial applications, cost optimization, and scalability of your prototype.</p>
+                    <p>Get complete, fully tested project kits and professional reports from Projectkart to ace your engineering evaluation.</p>
+                `
+            },
+            {
+                id: 'post-processing-3d-enclosures',
+                category: '3D Printing & Designing',
+                title: 'Post-Processing Techniques for Smooth, Professional 3D Printed Enclosures',
+                date: 'May 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-purple-900 to-pink-900',
+                icon: 'fa-wand-magic-sparkles',
+                summary: 'Master sanding, primer filling, epoxy coating, and threaded brass heat-set insert installation for robust electronic project housings...',
+                content: `
+                    <p class="mb-4">Raw FDM 3D printed objects exhibit visible layer striations. Professional electronic enclosures and product prototypes require specialized post-processing to achieve smooth, market-ready finishes.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Installing Heat-Set Brass Inserts</h3>
+                    <p class="mb-4">Instead of threading fastening screws directly into plastic threads which strip easily, use a temperature-controlled soldering iron to seat threaded brass inserts into custom post holes. This ensures secure, repeated assembly.</p>
+                    <p class="mb-4">Applying filler primer followed by light wet sanding transforms textured prints into glass-smooth surfaces ready for spray painting.</p>
+                    <p>Order high-precision 3D printed enclosures with brass inserts directly from Projectkart.</p>
+                `
+            },
+            {
+                id: 'watchdog-timers-iot',
+                category: 'Embedded Systems R&D',
+                title: 'Understanding Watchdog Timers (WDT) in Mission-Critical IoT Devices',
+                date: 'March 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-red-900 to-orange-900',
+                icon: 'fa-stopwatch',
+                summary: 'Prevent system freezes and infinite loops in unattended remote sensor deployments by correctly implementing hardware watchdog recovery routines...',
+                content: `
+                    <p class="mb-4">When IoT devices are deployed in remote, inaccessible locations, physical manual resets are impractical. Software freezes caused by memory exhaustion or TCP socket deadlocks can result in permanent offline status.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Hardware vs Software Watchdogs</h3>
+                    <p class="mb-4">Hardware watchdog timers operate independently of the primary CPU clock, guaranteeing a clean system reboot if the main firmware loop stops servicing the watchdog register.</p>
+                    <p class="mb-4">Proper firmware architecture ensures that watchdogs are refreshed only after all sub-tasks execute successfully.</p>
+                    <p>Partner with Projectkart for bulletproof embedded firmware development.</p>
+                `
+            },
+            {
+                id: 'plc-systems-manufacturing-india',
+                category: 'Industrial Automation',
+                title: 'The Evolution of PLC Systems in Modern Manufacturing Plants Across India',
+                date: 'February 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-slate-800 to-blue-900',
+                icon: 'fa-cogs',
+                summary: 'How Programmable Logic Controllers integrate with cloud dashboards, SCADA systems, and edge AI for predictive industrial maintenance...',
+                content: `
+                    <p class="mb-4">Industrial automation across India is undergoing a massive transformation. Traditional relay logic panels are being rapidly replaced by advanced PLCs and edge-connected IoT supervisory systems.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Bridging OT and IT Networks</h3>
+                    <p class="mb-4">Modern automated factories bridge Operational Technology (OT) and Information Technology (IT) to deliver real-time machine health diagnostics directly to management dashboards.</p>
+                    <p class="mb-4">Edge AI algorithms running alongside PLCs can predict component wear and mechanical failure before stoppages occur.</p>
+                    <p>Upgrade your factory floor with Projectkart's industrial automation engineering services.</p>
+                `
+            },
+            {
+                id: 'voltage-regulators-buck-converters',
+                category: 'Electronics Components Sourcing',
+                title: 'A Comprehensive Guide to Selecting Voltage Regulators and Buck Converters',
+                date: 'January 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-yellow-900 to-amber-900',
+                icon: 'fa-bolt',
+                summary: 'Compare linear regulators (LDOs) versus switch-mode step-down buck converters for power efficiency, thermal dissipation, and ripple reduction...',
+                content: `
+                    <p class="mb-4">Power management is critical when engineering battery-operated or multi-rail electronic circuits. Choosing between an LDO and a step-down buck converter determines thermal dissipation and battery longevity.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Efficiency Analysis</h3>
+                    <p class="mb-4">Linear regulators dissipate voltage differentials as waste heat, whereas switched-mode buck converters achieve operating efficiencies above 90%, making them ideal for heavy loads.</p>
+                    <p class="mb-4">Proper PCB layout around switching regulators is essential to minimize electromagnetic noise and output voltage ripple.</p>
+                    <p>Buy original voltage regulators and power modules online through Projectkart.</p>
+                `
+            },
+            {
+                id: 'snap-fit-joints-cad-3d-printing',
+                category: '3D Printing & Designing',
+                title: 'Designing Snap-Fit Joints in CAD for 3D Printed Electronic Enclosures',
+                date: 'December 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-teal-900 to-cyan-900',
+                icon: 'fa-puzzle-piece',
+                summary: 'Learn the mathematical principles of cantilever snap fits, beam deflection, and friction angles for tool-less electronic casing assembly...',
+                content: `
+                    <p class="mb-4">Snap-fit joints eliminate the need for metallic screws, lowering assembly costs and streamlining production for custom 3D printed electronic enclosures.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">CAD Design Best Practices for PLA</h3>
+                    <p class="mb-4">Design cantilever snap fingers with generous root fillets and a 30 to 45-degree mating undercut angle to allow smooth plastic deflection without snapping.</p>
+                    <p class="mb-4">Simulating beam deflection in CAD ensures your snap-fit latches retain clamping force over multiple assembly cycles.</p>
+                    <p>Order custom 3D printed mechanical enclosures from Projectkart.</p>
+                `
+            },
+            {
+                id: 'gsm-gps-vehicle-tracking',
+                category: 'Embedded IoT Solutions',
+                title: 'GSM & GPS Module Integration: Building Real-Time Vehicle Tracking Units',
+                date: 'November 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-indigo-950 to-blue-900',
+                icon: 'fa-location-crosshairs',
+                summary: 'Step-by-step tutorial on parsing NMEA sentences from GPS modules and transmitting coordinate packets over cellular GPRS networks...',
+                content: `
+                    <p class="mb-4">Real-time vehicle tracking systems rely on continuous GPS satellite coordinate acquisition paired with cellular data transmission for live mapping interfaces.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Parsing Raw NMEA Sentences</h3>
+                    <p class="mb-4">Using optimized GPS parsing libraries on microcontrollers, developers can easily extract latitude, longitude, speed, and UTC time data from serial NMEA streams.</p>
+                    <p class="mb-4">Buffering coordinates during cellular blackspots ensures data is transmitted once network coverage is restored.</p>
+                    <p>Buy GPS/GSM modules and project kits online from Projectkart with pan-India delivery.</p>
+                `
+            },
+            {
+                id: 'renewable-energy-project-ideas',
+                category: 'School & College Projects',
+                title: 'Top 5 Renewable Energy Project Ideas for Electrical & Electronics Students',
+                date: 'October 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-emerald-950 to-teal-900',
+                icon: 'fa-sun',
+                summary: 'Innovative solar tracking, wind turbine monitoring, and smart grid micro-controller projects that impress academic panel evaluators...',
+                content: `
+                    <p class="mb-4">Renewable energy integration is a vital engineering domain. Building a working hardware prototype demonstrates practical mastery of power electronics and control systems.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Recommended Student Projects</h3>
+                    <p class="mb-4">Dual-axis solar trackers with LDR feedback loops and IoT energy monitoring meters are exceptional projects that secure top marks in university vivas.</p>
+                    <p class="mb-4">All kits include complete source code, wiring schematics, and comprehensive project reports.</p>
+                    <p>Order student project kits pan-India from Projectkart.</p>
+                `
+            },
+            {
+                id: 'relay-modules-safety-guide',
+                category: 'Electronics Components Sourcing',
+                title: 'Understanding Relay Modules: Optocouplers, Trigger Modes, and Safety',
+                date: 'September 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-zinc-900 to-slate-900',
+                icon: 'fa-toggle-on',
+                summary: 'How to safely control high-voltage AC appliances using low-voltage microcontroller GPIO pins with optical isolation protection...',
+                content: `
+                    <p class="mb-4">Relay modules allow microcontrollers to switch high-voltage AC appliances like motors and heaters safely. However, inductive back-EMF can cause microcontroller resets if unisolated.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">The Role of Optocouplers</h3>
+                    <p class="mb-4">Optoisolated relay boards use optical light coupling to separate the low-voltage control circuit from high-voltage AC loads, protecting your hardware from dangerous power surges.</p>
+                    <p class="mb-4">Always verify high-voltage terminal screw torque and clearance spacing on PCB traces to prevent electrical flashover.</p>
+                    <p>Buy original relay modules and sensors online from Projectkart.</p>
+                `
+            },
+            {
+                id: 'calibrate-extruders-3d-printing',
+                category: '3D Printing & Designing',
+                title: 'How to Calibrate Extruder E-Steps and Flow Rate for Perfect 3D Prints',
+                date: 'August 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-fuchsia-900 to-purple-900',
+                icon: 'fa-sliders',
+                summary: 'Eliminate over-extrusion and under-extrusion permanently with our foolproof 100mm filament extrusion calibration method...',
+                content: `
+                    <p class="mb-4">Extruder calibration is the bedrock of reliable 3D printing. Inaccurate E-step configuration leads to over-extrusion or under-extrusion, compromising structural strength.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Step-by-Step Calibration</h3>
+                    <p class="mb-4">Mark 120mm on your filament above the extruder, extrude 100mm via terminal commands, measure the remaining length, and update your firmware steps-per-mm accordingly.</p>
+                    <p class="mb-4">Fine-tuning first-layer squish and extrusion multiplier guarantees flawless mechanical prints every time.</p>
+                    <p>Trust Projectkart for professional 3D printing services across India.</p>
+                `
+            },
+            {
+                id: 'freertos-esp32-multitasking',
+                category: 'Embedded Systems R&D',
+                title: 'Introduction to FreeRTOS on ESP32 for Multitasking Microcontroller Apps',
+                date: 'July 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-blue-950 to-indigo-900',
+                icon: 'fa-tasks',
+                summary: 'Learn how to split your firmware into concurrent prioritized tasks for Wi-Fi maintenance, sensor polling, and display updates...',
+                content: `
+                    <p class="mb-4">Traditional Arduino firmware runs in a single blocking loop. As IoT applications grow complex, functions like network handshakes stall critical sensor polling.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Advantages of FreeRTOS</h3>
+                    <p class="mb-4">FreeRTOS allows developers to assign separate CPU cores and priorities to distinct firmware tasks, ensuring interrupt latency remains minimal.</p>
+                    <p class="mb-4">Mutexes and semaphores prevent data corruption when multiple tasks access shared sensor variables.</p>
+                    <p>Partner with Projectkart for advanced embedded firmware engineering.</p>
+                `
+            },
+            {
+                id: 'ground-loops-emi-factory-sensors',
+                category: 'Industrial Automation',
+                title: 'Troubleshooting Common Ground Loops and EMI in Factory Sensor Networks',
+                date: 'June 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-stone-900 to-zinc-900',
+                icon: 'fa-shield-virus',
+                summary: 'Practical shielding techniques, twisted-pair cabling, and differential signaling to eliminate electromagnetic interference in industrial plants...',
+                content: `
+                    <p class="mb-4">Electromagnetic Interference (EMI) from heavy machinery and VFD motor drives can severely corrupt sensitive analog and digital sensor signals across industrial plants.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Effective Mitigation Strategies</h3>
+                    <p class="mb-4">Always deploy shielded twisted-pair cabling for analog sensors, ground the shield strictly at one end, and maintain physical separation from high-voltage power lines.</p>
+                    <p class="mb-4">Differential signaling techniques further enhance noise immunity in long-distance factory telemetry runs.</p>
+                    <p>Contact Projectkart for expert industrial automation troubleshooting and installation.</p>
+                `
+            },
+            {
+                id: 'touch-screen-lcd-nextion-arduino',
+                category: 'Electronics Components Sourcing',
+                title: 'Exploring Touch Screen LCD Modules: Nextion and TFT Displays with Arduino',
+                date: 'May 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-sky-900 to-blue-900',
+                icon: 'fa-mobile-screen',
+                summary: 'Create gorgeous graphical user interfaces for your hardware projects without taxing your microcontroller RAM using smart serial displays...',
+                content: `
+                    <p class="mb-4">Standard character LCDs limit user interaction. Intelligent TFT touch displays offload graphical rendering to their own onboard processors, communicating via serial UART commands.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">System Benefits</h3>
+                    <p class="mb-4">Your microcontroller remains free to focus entirely on sensor acquisition and control algorithms while the touch display handles buttons, gauges, and user menus.</p>
+                    <p class="mb-4">Drag-and-drop HMI design software makes creating custom operator control screens remarkably fast.</p>
+                    <p>Buy touch screen LCD modules online in India from Projectkart.</p>
+                `
+            },
+            {
+                id: 'living-hinges-tpu-pla-3d-printing',
+                category: '3D Printing & Designing',
+                title: 'Printing Living Hinges and Flexible Mechanisms in TPU and PLA',
+                date: 'April 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-rose-950 to-pink-900',
+                icon: 'fa-feather',
+                summary: 'Discover how geometric design and thin wall counts allow rigid or flexible 3D printed materials to bend thousands of times without failure...',
+                content: `
+                    <p class="mb-4">Living hinges are ultra-thin, flexible plastic sections connecting rigid parts, allowing them to bend repeatedly along a single axis without mechanical failure.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Design Recommendations</h3>
+                    <p class="mb-4">Maintain hinge thicknesses between 0.4mm and 0.6mm, aligning your slicer perimeter lines parallel to the bending axis for maximum fatigue endurance.</p>
+                    <p class="mb-4">Using flexible TPU filaments for living hinges guarantees near-infinite bend cycles without stress whitening.</p>
+                    <p>Order custom 3D printed flexible mechanisms from Projectkart.</p>
+                `
+            },
+            {
+                id: 'smart-agriculture-irrigation-system',
+                category: 'School & College Projects',
+                title: 'Designing Smart Agriculture Automated Irrigation Systems with Soil Sensors',
+                date: 'March 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-green-950 to-emerald-900',
+                icon: 'fa-seedling',
+                summary: 'A complete blueprint for capacitive soil moisture sensor calibration, pump relay control, and cloud logging for agricultural engineering projects...',
+                content: `
+                    <p class="mb-4">Water conservation in agriculture is critical. Automated irrigation systems monitor soil hydration levels in real-time and activate water pumps only when necessary.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Capacitive vs Resistive Probes</h3>
+                    <p class="mb-4">Capacitive soil moisture sensors resist galvanic corrosion far better than exposed resistive fork sensors, ensuring long-term deployment reliability in wet soils.</p>
+                    <p class="mb-4">Integration with cloud dashboards allows farmers to monitor crop hydration remotely.</p>
+                    <p>Get fully tested smart agriculture project kits from Projectkart.</p>
+                `
+            },
+            {
+                id: 'pcb-design-ground-planes-decoupling',
+                category: 'Embedded Systems R&D',
+                title: 'PCB Design Best Practices: Ground Planes, Trace Widths, and Decoupling',
+                date: 'February 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-violet-950 to-purple-900',
+                icon: 'fa-bolt-lightning',
+                summary: 'Avoid erratic microcontroller behavior by implementing solid copper ground pours, proper trace clearance, and bypass capacitors...',
+                content: `
+                    <p class="mb-4">Transitioning from breadboard prototypes to custom printed circuit boards (PCBs) requires adherence to strict layout guidelines to ensure signal integrity and EMC compliance.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Core PCB Rules</h3>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Bypass Capacitors:</strong> Place 0.1uF ceramic capacitors directly adjacent to every IC power pin.</li>
+                        <li><strong>Continuous Ground Planes:</strong> Use solid copper fills on internal layers to minimize return loop inductance.</li>
+                        <li><strong>Trace Width Calculations:</strong> Ensure high-current power traces are sufficiently wide to prevent excessive resistive heating.</li>
+                    </ul>
+                    <p>Trust Projectkart for professional PCB design and hardware R&D services.</p>
+                `
+            },
+            {
+                id: 'conveyor-sorting-color-sensors',
+                category: 'Industrial Automation',
+                title: 'Optimizing Conveyor Belt Sorting Systems Using Color Sensors and Stepper Motors',
+                date: 'January 2025',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-orange-950 to-amber-900',
+                icon: 'fa-boxes-packing',
+                summary: 'Automate material handling workflows with precision optical sensor feedback and microstepping motor drivers...',
+                content: `
+                    <p class="mb-4">Automated sorting lines are fundamental in modern warehousing and manufacturing. Integrating optical color sensors with conveyor stepper drives enables rapid object categorization.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Sensor Calibration</h3>
+                    <p class="mb-4">Calibrating RGB color sensor threshold values against ambient factory lighting ensures zero-error sorting accuracy during high-speed production runs.</p>
+                    <p class="mb-4">Microstepping drivers ensure smooth, vibration-free item transportation along the belt.</p>
+                    <p>Contact Projectkart for custom industrial conveyor automation systems.</p>
+                `
+            },
+            {
+                id: 'ultrasonic-sensor-physics-hc-sr04',
+                category: 'Electronics Components Sourcing',
+                title: 'Understanding Ultrasonic Distance Sensors: HC-SR04 Physics and Limitations',
+                date: 'December 2024',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-blue-950 to-cyan-900',
+                icon: 'fa-ruler',
+                summary: 'Master time-of-flight acoustic measurements, cone angle blind spots, and temperature compensation for accurate distance calculation...',
+                content: `
+                    <p class="mb-4">The HC-SR04 ultrasonic sensor is a staple for obstacle detection in robotics. Understanding its acoustic cone propagation helps eliminate erroneous distance readings.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Temperature Compensation</h3>
+                    <p class="mb-4">Because acoustic velocity varies with air temperature, integrating an ambient temperature sensor into your calculation algorithm dramatically improves measurement accuracy.</p>
+                    <p class="mb-4">Reflective surfaces at acute angles can deflect acoustic waves away from the receiver, causing missed echoes.</p>
+                    <p>Buy original ultrasonic sensors and modules online from Projectkart.</p>
+                `
+            },
+            {
+                id: 'planetary-gearboxes-3d-printing',
+                category: '3D Printing & Designing',
+                title: 'Designing Custom Gearboxes and Planetary Gears for 3D Printed Robotics',
+                date: 'November 2024',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-purple-950 to-fuchsia-900',
+                icon: 'fa-gears',
+                summary: 'Calculate module pitch, gear ratios, and backlash tolerances for functional 3D printed mechanical gear trains...',
+                content: `
+                    <p class="mb-4">3D printing allows rapid iteration of mechanical gearboxes. Designing custom planetary gear sets permits high torque multiplication in compact robotic joints.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Controlling Backlash</h3>
+                    <p class="mb-4">Incorporate small horizontal expansion allowances in your CAD slicer settings to prevent tight tooth meshing and mechanical binding in printed gears.</p>
+                    <p class="mb-4">Selecting appropriate gear modules ensures smooth power transfer under load.</p>
+                    <p>Order high-precision 3D printed mechanical parts from Projectkart.</p>
+                `
+            },
+            {
+                id: 'home-assistant-esphome-mqtt',
+                category: 'Embedded IoT Solutions',
+                title: 'Setting Up Local Home Assistant Servers with ESPHome and MQTT',
+                date: 'October 2024',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-slate-950 to-blue-950',
+                icon: 'fa-house-signal',
+                summary: 'Create a private, cloud-free smart home automation ecosystem using Raspberry Pi, ESP32 nodes, and zero-code firmware compilation...',
+                content: `
+                    <p class="mb-4">Local home automation prioritizes data privacy and low latency. Home Assistant combined with ESPHome allows effortless integration of custom ESP32 sensor nodes.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Over-the-Air (OTA) Updates</h3>
+                    <p class="mb-4">ESPHome supports wireless firmware flashing after the initial USB upload, making maintenance of installed wall sensors entirely seamless.</p>
+                    <p class="mb-4">Local MQTT brokers ensure automation continues functioning even during internet outages.</p>
+                    <p>Buy ESP32 modules and sensors online from Projectkart for your smart home projects.</p>
+                `
+            },
+            {
+                id: 'custom-pcb-enclosures-cad-guide',
+                category: 'Hardware R&D & Prototyping',
+                title: 'Complete Guide to Designing Custom PCB Enclosures in CAD for 3D Printing',
+                date: 'September 2024',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-indigo-900 to-teal-800',
+                icon: 'fa-pen-ruler',
+                summary: 'Learn PCB mounting boss design, connector cutouts, ventilation grills, and tolerance stacking for perfect fitment...',
+                content: `
+                    <p class="mb-4">Designing a custom enclosure requires precise PCB dimensions, standoff placement, and port clearance to ensure your electronics fit snugly on the first print.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Tolerance Stacking & Clearance</h3>
+                    <p class="mb-4">Always add a 0.2mm to 0.4mm clearance gap around PCB edges and port cutouts to account for FDM 3D printer extrusion variance and shrinkage.</p>
+                    <p class="mb-4">Incorporating ventilation grills prevents heat buildup around high-current power regulators.</p>
+                    <p>Partner with Projectkart for professional hardware R&D, CAD designing, and 3D printing services in India.</p>
                 `
             }
         ];
@@ -141,7 +654,11 @@
             const [selectedBlog, setSelectedBlog] = useState(null);
             const [searchTerm, setSearchTerm] = useState('');
 
-            const filteredBlogs = blogArticles.filter(art => art.title.toLowerCase().includes(searchTerm.toLowerCase()));
+            const filteredBlogs = blogArticles.filter(art => 
+                art.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                art.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                art.summary.toLowerCase().includes(searchTerm.toLowerCase())
+            );
 
             return (
                 <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col justify-between">
@@ -238,9 +755,9 @@
                         {/* Blog Hub Main Content */}
                         <main className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-                                <h1 className="text-xs font-bold tracking-widest uppercase text-indigo-600">SEO Knowledge Hub</h1>
-                                <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Projectkart Engineering Blog</h2>
-                                <p className="text-slate-600 text-sm sm:text-base">SEO-optimized guides, tutorials, and technical articles on embedded systems, industrial automation, and 3D printing.</p>
+                                <h1 className="text-xs font-bold tracking-widest uppercase text-indigo-600">Knowledge Hub</h1>
+                                <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Projectkart Engineering Blog ({blogArticles.length} Articles)</h2>
+                                <p className="text-slate-600 text-sm sm:text-base">In-depth technical guides, tutorials, and articles on 3D printing services, 3D designing, buying electronic components, hardware R&D, embedded IoT, student projects, and industrial automation.</p>
                             </div>
 
                             <div className="max-w-xl mx-auto mb-12">
@@ -248,7 +765,7 @@
                                     type="text" 
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    placeholder="Search blog articles (e.g. ESP32, 3D printing, PLC)..." 
+                                    placeholder="Search 30+ engineering articles (e.g. 3D printing, ESP32, components)..." 
                                     className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-indigo-500 shadow-sm"
                                 />
                             </div>
