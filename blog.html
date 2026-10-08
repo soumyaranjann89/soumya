@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectkart Engineering Blog | Hardware R&D, IoT & 3D Printing Articles</title>
+    <meta name="description" content="Read expert engineering guides, tutorials, and technical articles on embedded systems, IoT gateways, industrial automation, and 3D printing by Projectkart.">
+    <meta name="keywords" content="Projectkart blog, hardware R&D articles, IoT tutorials India, 3D printing guides, industrial automation blog">
+    <meta name="author" content="Projectkart">
+    
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://projectkart.co.in/blog.html">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- React & Framer Motion CDNs -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white flex flex-col min-h-screen justify-between">
+    <div id="blog-root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+        const { motion, AnimatePresence } = window.Motion;
+
+        const blogArticles = [
+            {
+                id: 'mqtt',
+                category: 'IoT & Automation',
+                title: 'Designing Reliable MQTT TCP Gateways for Industrial Sensor Telemetry',
+                date: 'March 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-indigo-900 to-violet-800',
+                icon: 'fa-wifi',
+                summary: 'How we architected robust MQTT communication frameworks for industrial vibro feeders and automated monitoring nodes across plants...',
+                content: `
+                    <p class="mb-4">In modern industrial environments, reliable data transmission is paramount. When deploying automated vibro feeders and sensor arrays across factory floors in India, Wi-Fi instability can interrupt operational telemetry.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Why MQTT over TCP?</h3>
+                    <p class="mb-4">MQTT (Message Queuing Telemetry Transport) is lightweight, featuring low overhead publish/subscribe architecture. Combined with TCP socket persistence on ESP32 microcontrollers, it ensures minimal packet loss and instant heartbeat monitoring.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Key Implementation Guidelines</h3>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Watchdog Timers:</strong> Always configure hardware watchdog timers to automatically restart ESP32 nodes upon network freeze.</li>
+                        <li><strong>QoS Level 1:</strong> Use Quality of Service level 1 to guarantee at least one delivery confirmation for critical current overload alarms.</li>
+                        <li><strong>Automatic Reconnect Sequences:</strong> Implement exponential backoff retry algorithms when broker handshakes fail.</li>
+                    </ul>
+                    <p>Need a custom MQTT gateway or industrial automation solution? Reach out to Projectkart today at <a href="tel:9337630692" class="text-indigo-600 font-bold">+91 9337630692</a>.</p>
+                `
+            },
+            {
+                id: 'filament',
+                category: 'Prototyping & 3D Printing',
+                title: 'PLA vs PLA+ vs PLA Pro: Choosing the Right Filament for Electronics Casings',
+                date: 'June 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-violet-900 to-pink-800',
+                icon: 'fa-cube',
+                summary: 'A practical breakdown of tensile strength, thermal properties, and layer adhesion when 3D printing custom PCB enclosures on Creality printers...',
+                content: `
+                    <p class="mb-4">When 3D printing custom enclosures for microcontrollers, sensors, and PCBs using our Creality 3D printers, selecting the correct filament dictates structural integrity and longevity.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Comparison of Filaments</h3>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li><strong>Standard PLA:</strong> Excellent dimensional accuracy and aesthetic finish, but can be brittle for snap-fit latches.</li>
+                        <li><strong>PLA+ / PLA Pro:</strong> Enhanced impact resistance, higher tensile strength, and superior layer adhesion—making it ideal for robust electronics casings and mechanical gears.</li>
+                    </ul>
+                    <p>Looking for professional 3D printing services in Bhubaneswar or pan-India? Send us your .STL file via WhatsApp!</p>
+                `
+            },
+            {
+                id: 'ideas',
+                category: 'Academic Final Year',
+                title: 'Top 10 Engineering Final Year Project Ideas With High Evaluation Score',
+                date: 'July 2026',
+                author: 'Soumya Ranjan Nayak',
+                gradient: 'from-blue-900 to-emerald-800',
+                icon: 'fa-graduation-cap',
+                summary: 'Looking for a standout B.Tech or Diploma project? Discover solar IoT monitors, automated safety systems, and smart microcontroller telemetry...',
+                content: `
+                    <p class="mb-4">University examiners and evaluators look for projects that solve real-world problems with tangible hardware and clean cloud dashboards.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Top Recommended Project Ideas:</h3>
+                    <ul class="list-disc pl-5 space-y-2 mb-4">
+                        <li>IoT-Enabled Solar Power Plant Monitoring and Efficiency Tracker.</li>
+                        <li>Automated Industrial Vibro Feeder System with Current Overload Protection.</li>
+                        <li>GSM & GPS Based School Bus Tracking and Passenger Alert Unit.</li>
+                        <li>Smart Agriculture Automated Irrigation with Soil Moisture Telemetry.</li>
+                    </ul>
+                    <p>At Projectkart, we provide fully tested working kits, source code, and complete PPT/reports for B.Tech and Diploma students across India. Contact us on WhatsApp at <a href="https://wa.me/919337630692" class="text-indigo-600 font-bold">+91 9337630692</a>.</p>
+                `
+            }
+        ];
+
+        function BlogPage() {
+            const [selectedBlog, setSelectedBlog] = useState(null);
+            const [searchTerm, setSearchTerm] = useState('');
+
+            const filteredBlogs = blogArticles.filter(art => art.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
+            return (
+                <div>
+                    {/* Header */}
+                    <header className="sticky top-0 z-40 glass-header border-b border-slate-200 bg-white/90">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                            <a href="index.html" className="flex items-center gap-3 group">
+                                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center text-white font-black text-xl shadow-lg">P</div>
+                                <div>
+                                    <span className="text-2xl font-extrabold tracking-tight text-slate-900">Project<span className="text-indigo-600">kart</span></span>
+                                    <span className="block text-[10px] tracking-widest uppercase text-slate-500 font-semibold">Engineering Blog Hub</span>
+                                </div>
+                            </a>
+                            <nav className="flex items-center gap-6 font-medium text-sm text-slate-600">
+                                <a href="index.html" className="hover:text-indigo-600 transition">Home</a>
+                                <a href="index.html#contact" className="bg-indigo-600 text-white px-4 py-2 rounded-xl">Get Quote</a>
+                            </nav>
+                        </div>
+                    </header>
+
+                    {/* Blog Content */}
+                    <main className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                            <h1 className="text-xs font-bold tracking-widest uppercase text-indigo-600">Projectkart Knowledge Base</h1>
+                            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Engineering & SEO Articles</h2>
+                            <p className="text-slate-600 text-sm sm:text-base">Technical insights on embedded microcontrollers, IoT gateways, and rapid 3D printing.</p>
+                        </div>
+
+                        <div className="max-w-xl mx-auto mb-12">
+                            <input 
+                                type="text" 
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                placeholder="Search articles..." 
+                                className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-indigo-500 shadow-sm"
+                            />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {filteredBlogs.map((art) => (
+                                <article 
+                                    key={art.id}
+                                    onClick={() => setSelectedBlog(art)}
+                                    className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col cursor-pointer group"
+                                >
+                                    <div className={`h-48 bg-gradient-to-r ${art.gradient} flex items-center justify-center p-6 text-center text-white font-bold text-lg`}>
+                                        <i className={`fa-solid ${art.icon} mr-2`}></i> {art.category}
+                                    </div>
+                                    <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                                        <div className="space-y-2">
+                                            <span className="text-[10px] uppercase font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded">{art.category}</span>
+                                            <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition">{art.title}</h3>
+                                            <p className="text-xs text-slate-600 line-clamp-3">{art.summary}</p>
+                                        </div>
+                                        <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500">
+                                            <span><i className="fa-regular fa-calendar mr-1"></i> {art.date}</span>
+                                            <span className="text-indigo-600 font-semibold">Read Article &rarr;</span>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </main>
+
+                    {/* Blog Reading Modal / Page Overlay */}
+                    <AnimatePresence>
+                        {selectedBlog && (
+                            <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+                                <motion.div 
+                                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                                    className="bg-white border border-slate-200 max-w-3xl w-full rounded-3xl p-8 relative shadow-2xl my-8 max-h-[90vh] overflow-y-auto"
+                                >
+                                    <button onClick={() => setSelectedBlog(null)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 text-2xl font-bold">&times;</button>
+                                    <div className="space-y-6">
+                                        <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">{selectedBlog.category}</span>
+                                        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">{selectedBlog.title}</h2>
+                                        <p className="text-xs text-slate-400"><i className="fa-regular fa-calendar mr-1"></i> {selectedBlog.date} | By {selectedBlog.author} (Projectkart)</p>
+                                        <div className="text-sm text-slate-700 leading-relaxed pt-4 border-t border-slate-100" dangerouslySetInnerHTML={{ __html: selectedBlog.content }}></div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Footer */}
+                    <footer className="bg-white border-t border-slate-200 text-slate-600 py-12 mt-20">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-400">
+                            <p>&copy; 2026 Projectkart (Foundered by Soumya Ranjan Nayak). All rights reserved.</p>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<BlogPage />, document.getElementById('blog-root'));
+    </script>
+</body>
+</html>
