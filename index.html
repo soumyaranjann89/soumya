@@ -85,75 +85,8 @@
         const { useState } = React;
         const { motion, AnimatePresence } = window.Motion;
 
-        const blogArticles = [
-            {
-                id: 'mqtt',
-                category: 'IoT & Automation',
-                title: 'Designing Reliable MQTT TCP Gateways for Industrial Sensor Telemetry',
-                date: 'March 2026',
-                author: 'Soumya Ranjan Nayak',
-                gradient: 'from-indigo-900 to-violet-800',
-                icon: 'fa-wifi',
-                summary: 'How we architected robust MQTT communication frameworks for industrial vibro feeders and automated monitoring nodes across plants...',
-                content: `
-                    <p class="mb-4">In modern industrial environments, reliable data transmission is paramount. When deploying automated vibro feeders and sensor arrays across factory floors in India, Wi-Fi instability can interrupt operational telemetry.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Why MQTT over TCP?</h3>
-                    <p class="mb-4">MQTT (Message Queuing Telemetry Transport) is lightweight, featuring low overhead publish/subscribe architecture. Combined with TCP socket persistence on ESP32 microcontrollers, it ensures minimal packet loss and instant heartbeat monitoring.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Key Implementation Guidelines</h3>
-                    <ul class="list-disc pl-5 space-y-2 mb-4">
-                        <li><strong>Watchdog Timers:</strong> Always configure hardware watchdog timers to automatically restart ESP32 nodes upon network freeze.</li>
-                        <li><strong>QoS Level 1:</strong> Use Quality of Service level 1 to guarantee at least one delivery confirmation for critical current overload alarms.</li>
-                        <li><strong>Automatic Reconnect Sequences:</strong> Implement exponential backoff retry algorithms when broker handshakes fail.</li>
-                    </ul>
-                    <p>Need a custom MQTT gateway or industrial automation solution? Reach out to Projectkart today at <a href="tel:9337630692" class="text-indigo-600 font-bold">+91 9337630692</a>.</p>
-                `
-            },
-            {
-                id: 'filament',
-                category: 'Prototyping & 3D Printing',
-                title: 'PLA vs PLA+ vs PLA Pro: Choosing the Right Filament for Electronics Casings',
-                date: 'June 2026',
-                author: 'Soumya Ranjan Nayak',
-                gradient: 'from-violet-900 to-pink-800',
-                icon: 'fa-cube',
-                summary: 'A practical breakdown of tensile strength, thermal properties, and layer adhesion when 3D printing custom PCB enclosures on Creality printers...',
-                content: `
-                    <p class="mb-4">When 3D printing custom enclosures for microcontrollers, sensors, and PCBs using our Creality 3D printers, selecting the correct filament dictates structural integrity and longevity.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Comparison of Filaments</h3>
-                    <ul class="list-disc pl-5 space-y-2 mb-4">
-                        <li><strong>Standard PLA:</strong> Excellent dimensional accuracy and aesthetic finish, but can be brittle for snap-fit latches.</li>
-                        <li><strong>PLA+ / PLA Pro:</strong> Enhanced impact resistance, higher tensile strength, and superior layer adhesion—making it ideal for robust electronics casings and mechanical gears.</li>
-                    </ul>
-                    <p>Looking for professional 3D printing services in Bhubaneswar or pan-India? Send us your .STL file via WhatsApp!</p>
-                `
-            },
-            {
-                id: 'ideas',
-                category: 'Academic Final Year',
-                title: 'Top 10 Engineering Final Year Project Ideas With High Evaluation Score',
-                date: 'July 2026',
-                author: 'Soumya Ranjan Nayak',
-                gradient: 'from-blue-900 to-emerald-800',
-                icon: 'fa-graduation-cap',
-                summary: 'Looking for a standout B.Tech or Diploma project? Discover solar IoT monitors, automated safety systems, and smart microcontroller telemetry...',
-                content: `
-                    <p class="mb-4">University examiners and evaluators look for projects that solve real-world problems with tangible hardware and clean cloud dashboards.</p>
-                    <h3 class="text-lg font-bold text-slate-900 mb-2">Top Recommended Project Ideas:</h3>
-                    <ul class="list-disc pl-5 space-y-2 mb-4">
-                        <li>IoT-Enabled Solar Power Plant Monitoring and Efficiency Tracker.</li>
-                        <li>Automated Industrial Vibro Feeder System with Current Overload Protection.</li>
-                        <li>GSM & GPS Based School Bus Tracking and Passenger Alert Unit.</li>
-                        <li>Smart Agriculture Automated Irrigation with Soil Moisture Telemetry.</li>
-                    </ul>
-                    <p>At Projectkart, we provide fully tested working kits, source code, and complete PPT/reports for B.Tech and Diploma students across India. Contact us on WhatsApp at <a href="https://wa.me/919337630692" class="text-indigo-600 font-bold">+91 9337630692</a>.</p>
-                `
-            }
-        ];
-
         function App() {
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-            const [selectedBlog, setSelectedBlog] = useState(null);
-            const [searchTerm, setSearchTerm] = useState('');
             const [faqs, setFaqs] = useState([
                 { q: "Do you ship project kits and hardware all over India?", a: "Yes! We securely package and ship our electronics project kits, custom 3D printed enclosures, and sensors pan-India via trusted courier partners with tracking.", open: false },
                 { q: "Are college and school project kits delivered fully working and tested?", a: "Absolute-ly. Every single academic project undergoes rigorous testing before dispatch. We also provide full source code, circuit schematics, and detailed documentation for your presentation.", open: false },
@@ -165,8 +98,6 @@
             const toggleFaq = (index) => {
                 setFaqs(faqs.map((f, i) => i === index ? { ...f, open: !f.open } : f));
             };
-
-            const filteredBlogs = blogArticles.filter(art => art.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
             return (
                 <div className="min-h-screen bg-slate-50 text-slate-800">
@@ -207,16 +138,13 @@
                             </motion.a>
 
                             <nav className="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-600">
-                                {['home', 'capabilities', 'projects', '3dprinting', 'blog', 'faqs', 'contact'].map((id) => (
-                                    <motion.a 
-                                        key={id}
-                                        href={`#${id}`}
-                                        whileHover={{ scale: 1.08, color: '#4f46e5' }}
-                                        className="transition capitalize"
-                                    >
-                                        {id === 'blog' ? 'SEO Blog Hub' : id}
-                                    </motion.a>
-                                ))}
+                                <a href="#home" className="hover:text-indigo-600 transition">Home</a>
+                                <a href="#capabilities" className="hover:text-indigo-600 transition">Capabilities</a>
+                                <a href="#projects" className="hover:text-indigo-600 transition">Projects</a>
+                                <a href="#3dprinting" className="hover:text-indigo-600 transition">3D Printing</a>
+                                <a href="blog.html" className="hover:text-indigo-600 transition font-bold text-indigo-600">SEO Blog Hub</a>
+                                <a href="#faqs" className="hover:text-indigo-600 transition">Faqs</a>
+                                <a href="#contact" className="hover:text-indigo-600 transition">Contact</a>
                             </nav>
 
                             <div className="hidden lg:flex items-center gap-4">
@@ -257,7 +185,7 @@
                                     <a href="#capabilities" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Capabilities</a>
                                     <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Academic & Industrial</a>
                                     <a href="#3dprinting" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">3D Printing</a>
-                                    <a href="#blog" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">SEO Blog Hub</a>
+                                    <a href="blog.html" className="block hover:text-indigo-600 transition py-1 font-bold text-indigo-600">SEO Blog Hub</a>
                                     <a href="#faqs" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">FAQs</a>
                                     <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/20">Get Quote / Contact Us</a>
                                 </motion.div>
@@ -587,83 +515,6 @@
                         </div>
                     </section>
 
-                    {/* SEO Blog Hub */}
-                    <section id="blog" className="py-24 bg-slate-50 border-t border-slate-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="text-center max-w-3xl mx-auto space-y-4 mb-16"
-                            >
-                                <h2 className="text-xs font-bold tracking-widest uppercase text-indigo-600">SEO Knowledge Hub</h2>
-                                <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Projectkart Engineering Blog</h3>
-                                <p className="text-slate-600 text-sm sm:text-base">SEO-optimized guides, tutorials, and technical articles on embedded systems, industrial automation, and 3D printing.</p>
-                            </motion.div>
-
-                            <div className="max-w-xl mx-auto mb-12">
-                                <input 
-                                    type="text" 
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                    placeholder="Search blog articles (e.g. ESP32, 3D printing, PLC)..." 
-                                    className="w-full bg-white border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-indigo-500 shadow-sm"
-                                />
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {filteredBlogs.map((art, idx) => (
-                                    <motion.article 
-                                        key={art.id}
-                                        initial={{ opacity: 0, y: 30 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: idx * 0.1 }}
-                                        whileHover={{ y: -8 }}
-                                        className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col"
-                                    >
-                                        <div className={`h-48 bg-gradient-to-r ${art.gradient} flex items-center justify-center p-6 text-center border-b border-slate-200`}>
-                                            <span className="text-white font-bold text-lg"><i className={`fa-solid ${art.icon} mr-2`}></i> {art.category}</span>
-                                        </div>
-                                        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                                            <div className="space-y-2">
-                                                <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded border border-indigo-100">{art.category}</span>
-                                                <h4 className="text-lg font-bold text-slate-900">{art.title}</h4>
-                                                <p className="text-xs text-slate-600 line-clamp-3">{art.summary}</p>
-                                            </div>
-                                            <div className="flex items-center justify-between pt-4 border-t border-slate-100 text-xs text-slate-500">
-                                                <span><i className="fa-regular fa-calendar mr-1"></i> {art.date}</span>
-                                                <button onClick={() => setSelectedBlog(art)} className="text-indigo-600 font-semibold hover:underline">Read Full Article &rarr;</button>
-                                            </div>
-                                        </div>
-                                    </motion.article>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Blog Modal */}
-                    <AnimatePresence>
-                        {selectedBlog && (
-                            <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-                                <motion.div 
-                                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                                    className="bg-white border border-slate-200 max-w-3xl w-full rounded-3xl p-8 relative shadow-2xl my-8 max-h-[90vh] overflow-y-auto"
-                                >
-                                    <button onClick={() => setSelectedBlog(null)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 text-2xl font-bold">&times;</button>
-                                    <div className="space-y-6">
-                                        <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">{selectedBlog.category}</span>
-                                        <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">{selectedBlog.title}</h2>
-                                        <p className="text-xs text-slate-400"><i className="fa-regular fa-calendar mr-1"></i> {selectedBlog.date} | By {selectedBlog.author} (Projectkart)</p>
-                                        <div className="text-sm text-slate-700 leading-relaxed pt-4 border-t border-slate-100" dangerouslySetInnerHTML={{ __html: selectedBlog.content }}></div>
-                                    </div>
-                                </motion.div>
-                            </div>
-                        )}
-                    </AnimatePresence>
-
                     {/* FAQs Section */}
                     <section id="faqs" className="py-24 bg-white border-t border-slate-200">
                         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -847,7 +698,7 @@
                                         <li><a href="#capabilities" className="hover:text-indigo-600 transition">Capabilities</a></li>
                                         <li><a href="#projects" className="hover:text-indigo-600 transition">Academic & Industrial</a></li>
                                         <li><a href="#3dprinting" className="hover:text-indigo-600 transition">3D Printing</a></li>
-                                        <li><a href="#blog" className="hover:text-indigo-600 transition">SEO Blog Hub</a></li>
+                                        <li><a href="blog.html" className="hover:text-indigo-600 transition">SEO Blog Hub</a></li>
                                     </ul>
                                 </div>
 
