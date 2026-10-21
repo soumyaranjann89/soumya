@@ -154,537 +154,539 @@
             };
 
             return (
-                <div className="min-h-screen bg-slate-50 text-slate-800">
-                    {/* Top Contact Bar */}
-                    <motion.div 
-                        initial={{ y: -30, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="bg-indigo-950 text-xs sm:text-sm py-2 px-4 text-indigo-100 relative z-50"
-                    >
-                        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-                            <div className="flex items-center gap-4">
-                                <span><i className="fa-solid fa-location-dot text-indigo-400 mr-1.5"></i> Bhubaneswar, Odisha, India</span>
-                                <span className="hidden sm:inline"><i className="fa-solid fa-shield-halved text-indigo-400 mr-1.5"></i> IoT & Software Solutions Hub</span>
-                            </div>
-                            <div className="flex items-center gap-5 font-medium">
-                                <a href="tel:9337630692" className="hover:text-white transition"><i className="fa-solid fa-phone text-indigo-400 mr-1.5"></i> +91 93376-30692</a>
-                                <a href="mailto:soumyaranjann89@gmail.com" className="hover:text-white transition"><i className="fa-solid fa-envelope text-indigo-400 mr-1.5"></i> soumyaranjann89@gmail.com</a>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Navigation Header */}
-                    <header className="sticky top-0 z-40 glass-header border-b border-slate-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-                            <motion.a 
-                                href="/" 
-                                whileHover={{ scale: 1.05 }}
-                                className="flex items-center gap-3 group"
-                            >
-                                <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20">
-                                    P
+                <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col justify-between">
+                    <div>
+                        {/* Top Contact Bar */}
+                        <motion.div 
+                            initial={{ y: -30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                            className="bg-indigo-950 text-xs sm:text-sm py-2 px-4 text-indigo-100 relative z-50"
+                        >
+                            <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+                                <div className="flex items-center gap-4">
+                                    <span><i className="fa-solid fa-location-dot text-indigo-400 mr-1.5"></i> Bhubaneswar, Odisha, India</span>
+                                    <span className="hidden sm:inline"><i className="fa-solid fa-shield-halved text-indigo-400 mr-1.5"></i> IoT & Software Solutions Hub</span>
                                 </div>
-                                <div>
-                                    <span className="text-2xl font-extrabold tracking-tight text-slate-900">Project<span className="text-indigo-600">kart</span></span>
-                                    <span className="block text-[10px] tracking-widest uppercase text-slate-500 font-semibold">IoT & Software Hub</span>
+                                <div className="flex items-center gap-5 font-medium">
+                                    <a href="tel:9337630692" className="hover:text-white transition"><i className="fa-solid fa-phone text-indigo-400 mr-1.5"></i> +91 93376-30692</a>
+                                    <a href="mailto:soumyaranjann89@gmail.com" className="hover:text-white transition"><i className="fa-solid fa-envelope text-indigo-400 mr-1.5"></i> soumyaranjann89@gmail.com</a>
                                 </div>
-                            </motion.a>
-
-                            <nav className="hidden lg:flex items-center gap-7 font-medium text-sm text-slate-600">
-                                <a href="/" className="hover:text-indigo-600 transition">Home</a>
-                                <a href="#iot-embedded" className="hover:text-indigo-600 transition">Embedded IoT</a>
-                                <a href="#components-store" className="hover:text-indigo-600 transition">Components Store</a>
-                                <a href="#3d-printing" className="hover:text-indigo-600 transition">3D Printing</a>
-                                <a href="#software-solutions" className="hover:text-indigo-600 transition">Software & Marketing</a>
-                                <a href="#faqs" className="hover:text-indigo-600 transition">FAQs</a>
-                                <a href="#contact" className="hover:text-indigo-600 transition">Contact</a>
-                            </nav>
-
-                            <div className="hidden lg:flex items-center gap-4">
-                                <motion.a 
-                                    href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20discuss%20an%20embedded%20iot%20solution%20in%20bhubaneswar." 
-                                    target="_blank"
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/20 transition flex items-center gap-2 text-sm"
-                                >
-                                    <i className="fa-brands fa-whatsapp text-lg"></i> WhatsApp
-                                </motion.a>
-                                <motion.a 
-                                    href="#contact" 
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition text-sm"
-                                >
-                                    Get Quote
-                                </motion.a>
                             </div>
+                        </motion.div>
 
-                            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-slate-700 hover:text-slate-900 focus:outline-none text-2xl">
-                                <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
-                            </button>
-                        </div>
-
-                        {/* Mobile Menu */}
-                        <AnimatePresence>
-                            {mobileMenuOpen && (
-                                <motion.div 
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 font-medium text-slate-700 shadow-xl"
+                        {/* Navigation Header */}
+                        <header className="sticky top-0 z-40 glass-header border-b border-slate-200">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                                <motion.a 
+                                    href="index.html" 
+                                    whileHover={{ scale: 1.05 }}
+                                    className="flex items-center gap-3 group"
                                 >
-                                    <a href="/" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Home</a>
-                                    <a href="#iot-embedded" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Embedded IoT Solutions</a>
-                                    <a href="#components-store" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Components Store</a>
-                                    <a href="#3d-printing" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Custom 3D Printing & Design</a>
-                                    <a href="#software-solutions" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Digital Marketing & Software</a>
-                                    <a href="#faqs" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">FAQs</a>
-                                    <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/20">Get Quote / Contact Us</a>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </header>
-
-                    {/* Floating WhatsApp Button */}
-                    <motion.a 
-                        href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20need%20assistance%20with%20your%20services." 
-                        target="_blank" 
-                        whileHover={{ scale: 1.15, rotate: 10 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/40 floating-whatsapp transition" 
-                        aria-label="Chat on WhatsApp"
-                    >
-                        <i className="fa-brands fa-whatsapp"></i>
-                    </motion.a>
-
-                    {/* Hero Section */}
-                    <section id="home" className="relative overflow-hidden hero-gradient pt-20 pb-28 lg:pt-32 lg:pb-40">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                                <motion.div 
-                                    initial={{ opacity: 0, x: -60 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.9, ease: "easeOut" }}
-                                    className="lg:col-span-7 space-y-8 text-center lg:text-left"
-                                >
-                                    <motion.div 
-                                        initial={{ scale: 0.9, opacity: 0 }}
-                                        animate={{ scale: 1, opacity: 1 }}
-                                        transition={{ delay: 0.2 }}
-                                        className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-700"
-                                    >
-                                        <span className="flex h-2 w-2 rounded-full bg-indigo-600 animate-pulse"></span>
-                                        Bhubaneswar’s Top IoT & Software Solutions Hub
-                                    </motion.div>
-                                    
-                                    <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-[1.12]">
-                                        Your Destination for <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">Embedded IoT, 3D Design & Software Solutions</span>
-                                    </h1>
-                                    
-                                    <p className="text-lg text-slate-600 font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                                        Projectkart delivers premier <strong>embedded IoT solutions in Bhubaneswar</strong>, electronics component selling, custom 3D printing and design, and complete digital marketing and software solutions.
-                                    </p>
-                                    
-                                    <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                                        <motion.a 
-                                            href="#contact" 
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/20 transition text-center"
-                                        >
-                                            Start Your Project <i className="fa-solid fa-arrow-right ml-2"></i>
-                                        </motion.a>
-                                        <motion.a 
-                                            href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20order%20components%20or%20services." 
-                                            target="_blank" 
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-emerald-600/20 transition text-center flex items-center justify-center gap-2"
-                                        >
-                                            <i className="fa-brands fa-whatsapp text-xl"></i> Chat on WhatsApp
-                                        </motion.a>
+                                    <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/20">
+                                        P
                                     </div>
+                                    <div>
+                                        <span className="text-2xl font-extrabold tracking-tight text-slate-900">Project<span className="text-indigo-600">kart</span></span>
+                                        <span className="block text-[10px] tracking-widest uppercase text-slate-500 font-semibold">IoT & Software Hub</span>
+                                    </div>
+                                </motion.a>
 
-                                    <motion.div 
-                                        initial={{ opacity: 0, y: 30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.4, duration: 0.6 }}
-                                        className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200"
+                                <nav className="hidden lg:flex items-center gap-7 font-medium text-sm text-slate-600">
+                                    <a href="index.html" className="hover:text-indigo-600 transition font-bold text-indigo-600">Home</a>
+                                    <a href="embedded-iot.html" className="hover:text-indigo-600 transition">Embedded IoT</a>
+                                    <a href="store.html" className="hover:text-indigo-600 transition">Components Store</a>
+                                    <a href="3d-printing.html" className="hover:text-indigo-600 transition">3D Printing</a>
+                                    <a href="software-marketing.html" className="hover:text-indigo-600 transition">Software & Marketing</a>
+                                    <a href="#faqs" className="hover:text-indigo-600 transition">FAQs</a>
+                                    <a href="#contact" className="hover:text-indigo-600 transition">Contact</a>
+                                </nav>
+
+                                <div className="hidden lg:flex items-center gap-4">
+                                    <motion.a 
+                                        href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20discuss%20an%20embedded%20iot%20solution%20in%20bhubaneswar." 
+                                        target="_blank"
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-600/20 transition flex items-center gap-2 text-sm"
                                     >
-                                        <div>
-                                            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">500+</div>
-                                            <div className="text-xs sm:text-sm text-slate-500 font-medium">Projects Executed</div>
-                                        </div>
-                                        <div>
-                                            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">100%</div>
-                                            <div className="text-xs sm:text-sm text-slate-500 font-medium">Verified & Tested</div>
-                                        </div>
-                                        <div>
-                                            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">Pan-India</div>
-                                            <div className="text-xs sm:text-sm text-slate-500 font-medium">Secure Delivery</div>
-                                        </div>
+                                        <i className="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                                    </motion.a>
+                                    <motion.a 
+                                        href="#contact" 
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition text-sm"
+                                    >
+                                        Get Quote
+                                    </motion.a>
+                                </div>
+
+                                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden text-slate-700 hover:text-slate-900 focus:outline-none text-2xl">
+                                    <i className={`fa-solid ${mobileMenuOpen ? 'fa-xmark' : 'fa-bars'}`}></i>
+                                </button>
+                            </div>
+
+                            {/* Mobile Menu */}
+                            <AnimatePresence>
+                                {mobileMenuOpen && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 font-medium text-slate-700 shadow-xl"
+                                    >
+                                        <a href="index.html" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1 font-bold text-indigo-600">Home</a>
+                                        <a href="embedded-iot.html" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Embedded IoT</a>
+                                        <a href="store.html" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Components Store</a>
+                                        <a href="3d-printing.html" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">3D Printing</a>
+                                        <a href="software-marketing.html" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">Software & Marketing</a>
+                                        <a href="#faqs" onClick={() => setMobileMenuOpen(false)} className="block hover:text-indigo-600 transition py-1">FAQs</a>
+                                        <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/20">Get Quote / Contact Us</a>
                                     </motion.div>
-                                </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </header>
 
-                                <motion.div 
-                                    initial={{ opacity: 0, x: 60 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.9, ease: "easeOut" }}
-                                    className="lg:col-span-5"
-                                >
-                                    <div className="relative mx-auto max-w-md lg:max-w-none">
-                                        <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-3xl blur-2xl opacity-20 animate-pulse"></div>
+                        {/* Floating WhatsApp Button */}
+                        <motion.a 
+                            href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20need%20assistance%20with%20your%20services." 
+                            target="_blank" 
+                            whileHover={{ scale: 1.15, rotate: 10 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl shadow-emerald-500/40 floating-whatsapp transition" 
+                            aria-label="Chat on WhatsApp"
+                        >
+                            <i className="fa-brands fa-whatsapp"></i>
+                        </motion.a>
+
+                        {/* Hero Section */}
+                        <section id="home" className="relative overflow-hidden hero-gradient pt-20 pb-28 lg:pt-32 lg:pb-40">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                                    <motion.div 
+                                        initial={{ opacity: 0, x: -60 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.9, ease: "easeOut" }}
+                                        className="lg:col-span-7 space-y-8 text-center lg:text-left"
+                                    >
                                         <motion.div 
-                                            whileHover={{ y: -5 }}
-                                            className="relative bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6"
+                                            initial={{ scale: 0.9, opacity: 0 }}
+                                            animate={{ scale: 1, opacity: 1 }}
+                                            transition={{ delay: 0.2 }}
+                                            className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-700"
                                         >
-                                            <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                                                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                                                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                                                </div>
-                                                <span className="text-xs text-indigo-600 font-mono">projectkart_hub.ino</span>
-                                            </div>
-                                            
-                                            <div className="space-y-3 font-mono text-xs sm:text-sm text-slate-700">
-                                                <p className="text-indigo-600">// Core Services Suite</p>
-                                                <p><span className="text-pink-600">#include</span> &lt;Embedded_IoT_Solutions.h&gt;</p>
-                                                <p><span className="text-pink-600">#include</span> &lt;Electronics_Store.h&gt;</p>
-                                                <p><span className="text-pink-600">#include</span> &lt;Software_Solutions.h&gt;</p>
-                                                <p className="text-slate-400">void setup() &#123;</p>
-                                                <p className="pl-4">initBhubaneswarHub();</p>
-                                                <p className="pl-4">launchSoftwareSolutions();</p>
-                                                <p className="text-slate-400">&#125;</p>
-                                            </div>
+                                            <span className="flex h-2 w-2 rounded-full bg-indigo-600 animate-pulse"></span>
+                                            Bhubaneswar’s Top IoT & Software Solutions Hub
+                                        </motion.div>
+                                        
+                                        <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-[1.12]">
+                                            Your Destination for <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-pink-600 bg-clip-text text-transparent">Embedded IoT, 3D Design & Software Solutions</span>
+                                        </h1>
+                                        
+                                        <p className="text-lg text-slate-600 font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                                            Projectkart delivers premier <strong>embedded IoT solutions in Bhubaneswar</strong>, electronics component selling, custom 3D printing and design, and complete digital marketing and software solutions.
+                                        </p>
+                                        
+                                        <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                                            <motion.a 
+                                                href="#contact" 
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-indigo-600/20 transition text-center"
+                                            >
+                                                Start Your Project <i className="fa-solid fa-arrow-right ml-2"></i>
+                                            </motion.a>
+                                            <motion.a 
+                                                href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20order%20components%20or%20services." 
+                                                target="_blank" 
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-emerald-600/20 transition text-center flex items-center justify-center gap-2"
+                                            >
+                                                <i className="fa-brands fa-whatsapp text-xl"></i> Chat on WhatsApp
+                                            </motion.a>
+                                        </div>
 
-                                            <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="p-3 bg-indigo-50 rounded-xl text-indigo-600 border border-indigo-100">
-                                                        <i className="fa-solid fa-microchip text-xl"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div className="text-sm font-bold text-slate-900">Engineering & Software Lab</div>
-                                                        <div className="text-xs text-slate-500">Bhubaneswar, Odisha</div>
-                                                    </div>
-                                                </div>
-                                                <span className="text-emerald-700 text-xs font-semibold px-2.5 py-1 bg-emerald-50 rounded-full border border-emerald-200">Active</span>
+                                        <motion.div 
+                                            initial={{ opacity: 0, y: 30 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.4, duration: 0.6 }}
+                                            className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200"
+                                        >
+                                            <div>
+                                                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">500+</div>
+                                                <div className="text-xs sm:text-sm text-slate-500 font-medium">Projects Executed</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">100%</div>
+                                                <div className="text-xs sm:text-sm text-slate-500 font-medium">Verified & Tested</div>
+                                            </div>
+                                            <div>
+                                                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900">Pan-India</div>
+                                                <div className="text-xs sm:text-sm text-slate-500 font-medium">Secure Delivery</div>
                                             </div>
                                         </motion.div>
-                                    </div>
-                                </motion.div>
-                            </div>
-                        </div>
-                    </section>
+                                    </motion.div>
 
-                    {/* Dedicated Section 1: Embedded IoT Solutions */}
-                    <section id="iot-embedded" className="py-24 bg-white border-t border-slate-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                className="text-center max-w-3xl mx-auto space-y-4 mb-16"
-                            >
-                                <h2 className="text-xs font-bold tracking-widest uppercase text-indigo-600">Smart Automation</h2>
-                                <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Embedded IoT Solutions in Bhubaneswar</h3>
-                                <p className="text-slate-600 text-sm sm:text-base">Developing high-performance firmware, wireless sensor networks, MQTT TCP gateways, and cloud telemetry systems.</p>
-                            </motion.div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {[
-                                    { icon: 'fa-wifi', title: 'Wireless IoT Integration', desc: 'Custom ESP32, Arduino, and STM32 microcontroller programming connected securely to real-time mobile and web cloud dashboards.' },
-                                    { icon: 'fa-industry', title: 'Industrial Telemetry', desc: 'Robust industrial automation systems, vibro feeder controls, current detection systems, and automated machine monitoring.' },
-                                    { icon: 'fa-graduation-cap', title: 'Academic Final Year Projects', desc: 'Ready-to-deploy B.Tech and M.Tech embedded systems projects featuring complete source code, circuit schematics, and viva documentation.' }
-                                ].map((item, idx) => (
                                     <motion.div 
-                                        key={idx}
-                                        whileHover={{ y: -8 }}
-                                        className="bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm transition space-y-4"
+                                        initial={{ opacity: 0, x: 60 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.9, ease: "easeOut" }}
+                                        className="lg:col-span-5"
                                     >
-                                        <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 text-xl shadow-sm">
-                                            <i className={`fa-solid ${item.icon}`}></i>
+                                        <div className="relative mx-auto max-w-md lg:max-w-none">
+                                            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-3xl blur-2xl opacity-20 animate-pulse"></div>
+                                            <motion.div 
+                                                whileHover={{ y: -5 }}
+                                                className="relative bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6"
+                                            >
+                                                <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+                                                    <div className="flex items-center gap-2">
+                                                        <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                                                        <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                                                    </div>
+                                                    <span className="text-xs text-indigo-600 font-mono">projectkart_hub.ino</span>
+                                                </div>
+                                                
+                                                <div className="space-y-3 font-mono text-xs sm:text-sm text-slate-700">
+                                                    <p className="text-indigo-600">// Core Services Suite</p>
+                                                    <p><span className="text-pink-600">#include</span> &lt;Embedded_IoT_Solutions.h&gt;</p>
+                                                    <p><span className="text-pink-600">#include</span> &lt;Electronics_Store.h&gt;</p>
+                                                    <p><span className="text-pink-600">#include</span> &lt;Software_Solutions.h&gt;</p>
+                                                    <p className="text-slate-400">void setup() &#123;</p>
+                                                    <p className="pl-4">initBhubaneswarHub();</p>
+                                                    <p className="pl-4">launchSoftwareSolutions();</p>
+                                                    <p className="text-slate-400">&#125;</p>
+                                                </div>
+
+                                                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="p-3 bg-indigo-50 rounded-xl text-indigo-600 border border-indigo-100">
+                                                            <i className="fa-solid fa-microchip text-xl"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div className="text-sm font-bold text-slate-900">Engineering & Software Lab</div>
+                                                            <div className="text-xs text-slate-500">Bhubaneswar, Odisha</div>
+                                                        </div>
+                                                    </div>
+                                                    <span className="text-emerald-700 text-xs font-semibold px-2.5 py-1 bg-emerald-50 rounded-full border border-emerald-200">Active</span>
+                                                </div>
+                                            </motion.div>
                                         </div>
-                                        <h4 className="text-xl font-bold text-slate-900">{item.title}</h4>
-                                        <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
                                     </motion.div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Dedicated Section 2: Electronics Component Selling Page */}
-                    <section id="components-store" className="py-24 bg-slate-50 border-t border-slate-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                className="text-center max-w-3xl mx-auto space-y-4 mb-16"
-                            >
-                                <h2 className="text-xs font-bold tracking-widest uppercase text-amber-600">Maker Store</h2>
-                                <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Electronics Component Selling & Engineering Kits</h3>
-                                <p className="text-slate-600 text-sm sm:text-base">Your trusted source to buy genuine microcontroller boards, sensors, modules, displays, and wiring essentials with pan-India delivery.</p>
-                            </motion.div>
-
-                            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                {[
-                                    { icon: 'fa-microchip', title: 'Arduino & ESP32 Boards', desc: 'Original microcontroller development boards for high-speed firmware execution.' },
-                                    { icon: 'fa-gauge', title: 'Sensors & Probes', desc: 'Soil moisture, temperature, ultrasonic, and gas sensor modules.' },
-                                    { icon: 'fa-display', title: 'LCD & OLED Displays', desc: '16x2 character LCDs and 0.96 inch OLED screens for clear data readouts.' },
-                                    { icon: 'fa-bolt', title: 'Relays & Power Modules', desc: 'Buck converters, 5V/12V relay modules, and reliable power distribution units.' }
-                                ].map((comp, i) => (
-                                    <motion.div 
-                                        key={i}
-                                        whileHover={{ y: -5 }}
-                                        className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3"
-                                    >
-                                        <div className="text-amber-600 text-2xl"><i className={`fa-solid ${comp.icon}`}></i></div>
-                                        <h4 className="text-lg font-bold text-slate-900">{comp.title}</h4>
-                                        <p className="text-slate-600 text-xs leading-relaxed">{comp.desc}</p>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Dedicated Section 3: Custom 3D Printing and Design */}
-                    <section id="3d-printing" className="py-24 bg-white border-t border-slate-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                className="text-center max-w-3xl mx-auto space-y-4 mb-16"
-                            >
-                                <h2 className="text-xs font-bold tracking-widest uppercase text-pink-600">Rapid Prototyping & Design</h2>
-                                <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Custom 3D Printing and Design Services</h3>
-                                <p className="text-slate-600 text-sm sm:text-base">Equipped with Creality 3D printers and premium PLA filaments to build custom enclosures, mechanical parts, and bespoke prototypes.</p>
-                            </motion.div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-4">
-                                    <div className="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-pink-600 text-xl">
-                                        <i className="fa-solid fa-cube"></i>
-                                    </div>
-                                    <h4 className="text-2xl font-bold text-slate-900">Industrial & Engineering 3D Printing</h4>
-                                    <p className="text-slate-600 text-sm leading-relaxed">
-                                        Custom FDM 3D printing for electronic project enclosures, prototype testing models, gears, and complex mechanical brackets utilizing high-strength PLA, PLA Pro, and PLA+ filaments. Fast 24-48 hour turnaround.
-                                    </p>
-                                </div>
-
-                                <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-4">
-                                    <div className="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-pink-600 text-xl">
-                                        <i className="fa-solid fa-pen-ruler"></i>
-                                    </div>
-                                    <h4 className="text-2xl font-bold text-slate-900">Custom 3D Printing and Design</h4>
-                                    <p className="text-slate-600 text-sm leading-relaxed">
-                                        Transform your conceptual sketches and ideas into production-ready 3D CAD models. We specialize in custom 3D printing and design tailored for personalized products, architectural models, and functional mechanical components.
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    {/* Dedicated Section 4: Digital Marketing and Software Solutions */}
-                    <section id="software-solutions" className="py-24 bg-slate-50 border-t border-slate-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                                className="text-center max-w-3xl mx-auto space-y-4 mb-16"
-                            >
-                                <h2 className="text-xs font-bold tracking-widest uppercase text-emerald-600">Digital Growth & Tech</h2>
-                                <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Digital Marketing and Software Solutions</h3>
-                                <p className="text-slate-600 text-sm sm:text-base">We empower businesses with robust digital marketing strategies and tailored software solutions to scale revenue and streamline operations.</p>
-                            </motion.div>
+                        {/* Dedicated Section 1: Smart Automation & Embedded IoT */}
+                        <section id="iot-embedded" className="py-24 bg-white border-t border-slate-200">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                    className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+                                >
+                                    <h2 className="text-xs font-bold tracking-widest uppercase text-indigo-600">Smart Automation</h2>
+                                    <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Embedded IoT Solutions in Bhubaneswar</h3>
+                                    <p className="text-slate-600 text-sm sm:text-base">Developing high-performance firmware, wireless sensor networks, MQTT TCP gateways, and cloud telemetry systems.</p>
+                                </motion.div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                {[
-                                    { icon: 'fa-bullhorn', title: 'Digital Marketing & SEO', desc: 'Boost your brand visibility on Google search, optimize local business listings, and drive targeted web traffic.' },
-                                    { icon: 'fa-code', title: 'Custom Software Solutions', desc: 'Scalable web development, desktop tools, database integration, and software applications built for your workflow.' },
-                                    { icon: 'fa-chart-line', title: 'Business Growth Strategy', desc: 'Data-driven marketing funnels and lead generation campaigns designed to convert visitors into loyal customers.' }
-                                ].map((sol, idx) => (
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                    {[
+                                        { icon: 'fa-wifi', title: 'Wireless IoT Integration', desc: 'Custom ESP32, Arduino, and STM32 microcontroller programming connected securely to real-time mobile and web cloud dashboards.' },
+                                        { icon: 'fa-industry', title: 'Industrial Telemetry', desc: 'Robust industrial automation systems, vibro feeder controls, current detection systems, and automated machine monitoring.' },
+                                        { icon: 'fa-graduation-cap', title: 'Academic Final Year Projects', desc: 'Ready-to-deploy B.Tech and M.Tech embedded systems projects featuring complete source code, circuit schematics, and viva documentation.' }
+                                    ].map((item, idx) => (
+                                        <motion.div 
+                                            key={idx}
+                                            whileHover={{ y: -8 }}
+                                            className="bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm transition space-y-4"
+                                        >
+                                            <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 text-xl shadow-sm">
+                                                <i className={`fa-solid ${item.icon}`}></i>
+                                            </div>
+                                            <h4 className="text-xl font-bold text-slate-900">{item.title}</h4>
+                                            <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Dedicated Section 2: Maker Store & Electronics Component Selling */}
+                        <section id="components-store" className="py-24 bg-slate-50 border-t border-slate-200">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                    className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+                                >
+                                    <h2 className="text-xs font-bold tracking-widest uppercase text-amber-600">Maker Store</h2>
+                                    <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Electronics Component Selling & Engineering Kits</h3>
+                                    <p className="text-slate-600 text-sm sm:text-base">Your trusted source to buy genuine microcontroller boards, sensors, modules, displays, and wiring essentials with pan-India delivery.</p>
+                                </motion.div>
+
+                                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                    {[
+                                        { icon: 'fa-microchip', title: 'Arduino & ESP32 Boards', desc: 'Original microcontroller development boards for high-speed firmware execution.' },
+                                        { icon: 'fa-gauge', title: 'Sensors & Probes', desc: 'Soil moisture, temperature, ultrasonic, and gas sensor modules.' },
+                                        { icon: 'fa-display', title: 'LCD & OLED Displays', desc: '16x2 character LCDs and 0.96 inch OLED screens for clear data readouts.' },
+                                        { icon: 'fa-bolt', title: 'Relays & Power Modules', desc: 'Buck converters, 5V/12V relay modules, and reliable power distribution units.' }
+                                    ].map((comp, i) => (
+                                        <motion.div 
+                                            key={i}
+                                            whileHover={{ y: -5 }}
+                                            className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-3"
+                                        >
+                                            <div className="text-amber-600 text-2xl"><i className={`fa-solid ${comp.icon}`}></i></div>
+                                            <h4 className="text-lg font-bold text-slate-900">{comp.title}</h4>
+                                            <p className="text-slate-600 text-xs leading-relaxed">{comp.desc}</p>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Dedicated Section 3: Rapid Prototyping & Custom 3D Printing */}
+                        <section id="3d-printing" className="py-24 bg-white border-t border-slate-200">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                    className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+                                >
+                                    <h2 className="text-xs font-bold tracking-widest uppercase text-pink-600">Rapid Prototyping & Design</h2>
+                                    <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Custom 3D Printing and Design Services</h3>
+                                    <p className="text-slate-600 text-sm sm:text-base">Equipped with Creality 3D printers and premium PLA filaments to build custom enclosures, mechanical parts, and bespoke prototypes.</p>
+                                </motion.div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                    <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-4">
+                                        <div className="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-pink-600 text-xl">
+                                            <i className="fa-solid fa-cube"></i>
+                                        </div>
+                                        <h4 className="text-2xl font-bold text-slate-900">Industrial & Engineering 3D Printing</h4>
+                                        <p className="text-slate-600 text-sm leading-relaxed">
+                                            Custom FDM 3D printing for electronic project enclosures, prototype testing models, gears, and complex mechanical brackets utilizing high-strength PLA, PLA Pro, and PLA+ filaments. Fast 24-48 hour turnaround.
+                                        </p>
+                                    </div>
+
+                                    <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-4">
+                                        <div className="w-12 h-12 rounded-xl bg-pink-50 border border-pink-100 flex items-center justify-center text-pink-600 text-xl">
+                                            <i className="fa-solid fa-pen-ruler"></i>
+                                        </div>
+                                        <h4 className="text-2xl font-bold text-slate-900">Custom 3D Printing and Design</h4>
+                                        <p className="text-slate-600 text-sm leading-relaxed">
+                                            Transform your conceptual sketches and ideas into production-ready 3D CAD models. We specialize in custom 3D printing and design tailored for personalized products, architectural models, and functional mechanical components.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Dedicated Section 4: Digital Growth & Tech Solutions */}
+                        <section id="software-solutions" className="py-24 bg-slate-50 border-t border-slate-200">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                    className="text-center max-w-3xl mx-auto space-y-4 mb-16"
+                                >
+                                    <h2 className="text-xs font-bold tracking-widest uppercase text-emerald-600">Digital Growth & Tech</h2>
+                                    <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Digital Marketing and Software Solutions</h3>
+                                    <p className="text-slate-600 text-sm sm:text-base">We empower businesses with robust digital marketing strategies and tailored software solutions to scale revenue and streamline operations.</p>
+                                </motion.div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                    {[
+                                        { icon: 'fa-bullhorn', title: 'Digital Marketing & SEO', desc: 'Boost your brand visibility on Google search, optimize local business listings, and drive targeted web traffic.' },
+                                        { icon: 'fa-code', title: 'Custom Software Solutions', desc: 'Scalable web development, desktop tools, database integration, and software applications built for your workflow.' },
+                                        { icon: 'fa-chart-line', title: 'Business Growth Strategy', desc: 'Data-driven marketing funnels and lead generation campaigns designed to convert visitors into loyal customers.' }
+                                    ].map((sol, idx) => (
+                                        <motion.div 
+                                            key={idx}
+                                            whileHover={{ y: -8 }}
+                                            className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm space-y-4"
+                                        >
+                                            <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 text-xl">
+                                                <i className={`fa-solid ${sol.icon}`}></i>
+                                            </div>
+                                            <h4 className="text-xl font-bold text-slate-900">{sol.title}</h4>
+                                            <p className="text-slate-600 text-sm leading-relaxed">{sol.desc}</p>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* FAQs Section */}
+                        <section id="faqs" className="py-24 bg-white border-t border-slate-200">
+                            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    className="text-center space-y-4 mb-16"
+                                >
+                                    <h2 className="text-xs font-bold tracking-widest uppercase text-indigo-600">Got Questions?</h2>
+                                    <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Frequently Asked Questions</h3>
+                                    <p className="text-slate-600 text-sm sm:text-base">Everything you need to know about our IoT solutions, electronic components, custom 3D printing, and software services.</p>
+                                </motion.div>
+
+                                <div className="space-y-4">
+                                    {faqs.map((faq, idx) => (
+                                        <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                                            <button onClick={() => toggleFaq(idx)} className="w-full flex justify-between items-center text-left font-bold text-slate-900 text-base focus:outline-none">
+                                                <span>{faq.q}</span>
+                                                <i className={`fa-solid fa-chevron-down text-indigo-600 transition-transform duration-300 ${faq.open ? 'rotate-180' : ''}`}></i>
+                                            </button>
+                                            <AnimatePresence>
+                                                {faq.open && (
+                                                    <motion.div 
+                                                        initial={{ opacity: 0, height: 0 }}
+                                                        animate={{ opacity: 1, height: 'auto' }}
+                                                        exit={{ opacity: 0, height: 0 }}
+                                                        className="pt-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-4 overflow-hidden"
+                                                    >
+                                                        {faq.a}
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Contact & Quotation */}
+                        <section id="contact" className="py-24 relative bg-slate-50 border-t border-slate-200">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                                     <motion.div 
-                                        key={idx}
-                                        whileHover={{ y: -8 }}
-                                        className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm space-y-4"
+                                        initial={{ opacity: 0, x: -30 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        className="lg:col-span-5 space-y-6"
                                     >
-                                        <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 text-xl">
-                                            <i className={`fa-solid ${sol.icon}`}></i>
+                                        <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-700">
+                                            Get In Touch
                                         </div>
-                                        <h4 className="text-xl font-bold text-slate-900">{sol.title}</h4>
-                                        <p className="text-slate-600 text-sm leading-relaxed">{sol.desc}</p>
+                                        <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Let's Build or Grow Your Business With Projectkart</h3>
+                                        <p className="text-slate-600 text-sm leading-relaxed">
+                                            Whether you need an embedded IoT solution, electronic components, custom 3D printing and design, or expert digital marketing and software solutions in Bhubaneswar, Soumya Ranjan and our team are ready to assist you.
+                                        </p>
+
+                                        <div className="space-y-4 pt-4">
+                                            <div className="flex items-start gap-4">
+                                                <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600">
+                                                    <i className="fa-solid fa-location-dot text-lg"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 className="text-slate-900 font-bold text-sm">Location</h4>
+                                                    <p className="text-xs text-slate-500">Bhubaneswar, Odisha, India - 751024</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex items-start gap-4">
+                                                <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600">
+                                                    <i className="fa-solid fa-envelope text-lg"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 className="text-slate-900 font-bold text-sm">Email Us</h4>
+                                                    <p className="text-xs text-slate-500">soumyaranjann89@gmail.com</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="flex items-start gap-4">
+                                                <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600">
+                                                    <i className="fa-solid fa-phone text-lg"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 className="text-slate-900 font-bold text-sm">Phone / WhatsApp</h4>
+                                                    <p className="text-xs text-slate-500">+91 9337630692</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="pt-4">
+                                            <motion.a 
+                                                href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20discuss%20an%20inquiry." 
+                                                target="_blank" 
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition text-sm"
+                                            >
+                                                <i className="fa-brands fa-whatsapp text-lg"></i> Direct WhatsApp Chat
+                                            </motion.a>
+                                        </div>
                                     </motion.div>
-                                ))}
+
+                                    <motion.div 
+                                        initial={{ opacity: 0, x: 30 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        className="lg:col-span-7 bg-white border border-slate-200 p-8 rounded-3xl shadow-xl"
+                                    >
+                                        <h4 className="text-xl font-bold text-slate-900 mb-6">Send an Inquiry or Quote Request</h4>
+                                        
+                                        <form onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your message has been sent successfully to Soumya Ranjan at Projectkart. We will get back to you shortly.'); }} className="space-y-4">
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Your Name *</label>
+                                                    <input type="text" required placeholder="Soumya Ranjan" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp *</label>
+                                                    <input type="tel" required placeholder="+91 9337630692" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500" />
+                                                </div>
+                                            </div>
+
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
+                                                    <input type="email" required placeholder="soumyaranjann89@gmail.com" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500" />
+                                                </div>
+                                                <div>
+                                                    <label className="block text-xs font-semibold text-slate-700 mb-1">Service Required *</label>
+                                                    <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500">
+                                                        <option>Embedded IoT Solution (Bhubaneswar)</option>
+                                                        <option>Electronics Component Sourcing</option>
+                                                        <option>Custom 3D Printing and Design</option>
+                                                        <option>Digital Marketing and Software Solutions</option>
+                                                        <option>College / School Electronics Project</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-xs font-semibold text-slate-700 mb-1">Project Details / Message *</label>
+                                                <textarea rows="4" required placeholder="Describe your specifications, timeline, or requirements..." className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500"></textarea>
+                                            </div>
+
+                                            <motion.button 
+                                                whileHover={{ scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
+                                                type="submit" 
+                                                className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-xl shadow-indigo-600/20"
+                                            >
+                                                <i className="fa-solid fa-paper-plane mr-2"></i> Submit Inquiry
+                                            </motion.button>
+                                        </form>
+                                    </motion.div>
+                                </div>
                             </div>
-                        </div>
-                    </section>
-
-                    {/* FAQs Section */}
-                    <section id="faqs" className="py-24 bg-white border-t border-slate-200">
-                        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="text-center space-y-4 mb-16"
-                            >
-                                <h2 className="text-xs font-bold tracking-widest uppercase text-indigo-600">Got Questions?</h2>
-                                <h3 className="text-3xl sm:text-5xl font-extrabold text-slate-900">Frequently Asked Questions</h3>
-                                <p className="text-slate-600 text-sm sm:text-base">Everything you need to know about our IoT solutions, electronic components, custom 3D printing, and software services.</p>
-                            </motion.div>
-
-                            <div className="space-y-4">
-                                {faqs.map((faq, idx) => (
-                                    <div key={idx} className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                                        <button onClick={() => toggleFaq(idx)} className="w-full flex justify-between items-center text-left font-bold text-slate-900 text-base focus:outline-none">
-                                            <span>{faq.q}</span>
-                                            <i className={`fa-solid fa-chevron-down text-indigo-600 transition-transform duration-300 ${faq.open ? 'rotate-180' : ''}`}></i>
-                                        </button>
-                                        <AnimatePresence>
-                                            {faq.open && (
-                                                <motion.div 
-                                                    initial={{ opacity: 0, height: 0 }}
-                                                    animate={{ opacity: 1, height: 'auto' }}
-                                                    exit={{ opacity: 0, height: 0 }}
-                                                    className="pt-4 text-sm text-slate-600 leading-relaxed border-t border-slate-100 mt-4 overflow-hidden"
-                                                >
-                                                    {faq.a}
-                                                </motion.div>
-                                            )}
-                                        </AnimatePresence>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Contact & Quotation */}
-                    <section id="contact" className="py-24 relative bg-slate-50 border-t border-slate-200">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                                <motion.div 
-                                    initial={{ opacity: 0, x: -30 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    className="lg:col-span-5 space-y-6"
-                                >
-                                    <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 rounded-full px-4 py-1.5 text-xs font-semibold text-indigo-700">
-                                        Get In Touch
-                                    </div>
-                                    <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Let's Build or Grow Your Business With Projectkart</h3>
-                                    <p className="text-slate-600 text-sm leading-relaxed">
-                                        Whether you need an embedded IoT solution, electronic components, custom 3D printing and design, or expert digital marketing and software solutions in Bhubaneswar, Soumya Ranjan and our team are ready to assist you.
-                                    </p>
-
-                                    <div className="space-y-4 pt-4">
-                                        <div className="flex items-start gap-4">
-                                            <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600">
-                                                <i className="fa-solid fa-location-dot text-lg"></i>
-                                            </div>
-                                            <div>
-                                                <h4 className="text-slate-900 font-bold text-sm">Location</h4>
-                                                <p className="text-xs text-slate-500">Bhubaneswar, Odisha, India - 751024</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex items-start gap-4">
-                                            <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600">
-                                                <i className="fa-solid fa-envelope text-lg"></i>
-                                            </div>
-                                            <div>
-                                                <h4 className="text-slate-900 font-bold text-sm">Email Us</h4>
-                                                <p className="text-xs text-slate-500">soumyaranjann89@gmail.com</p>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex items-start gap-4">
-                                            <div className="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600">
-                                                <i className="fa-solid fa-phone text-lg"></i>
-                                            </div>
-                                            <div>
-                                                <h4 className="text-slate-900 font-bold text-sm">Phone / WhatsApp</h4>
-                                                <p className="text-xs text-slate-500">+91 9337630692</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="pt-4">
-                                        <motion.a 
-                                            href="https://wa.me/919337630692?text=Hello%20Projectkart,%20I%20want%20to%20discuss%20an%20inquiry." 
-                                            target="_blank" 
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition text-sm"
-                                        >
-                                            <i className="fa-brands fa-whatsapp text-lg"></i> Direct WhatsApp Chat
-                                        </motion.a>
-                                    </div>
-                                </motion.div>
-
-                                <motion.div 
-                                    initial={{ opacity: 0, x: 30 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    className="lg:col-span-7 bg-white border border-slate-200 p-8 rounded-3xl shadow-xl"
-                                >
-                                    <h4 className="text-xl font-bold text-slate-900 mb-6">Send an Inquiry or Quote Request</h4>
-                                    
-                                    <form onSubmit={(e) => { e.preventDefault(); alert('Thank you! Your message has been sent successfully to Soumya Ranjan at Projectkart. We will get back to you shortly.'); }} className="space-y-4">
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div>
-                                                <label className="block text-xs font-semibold text-slate-700 mb-1">Your Name *</label>
-                                                <input type="text" required placeholder="Soumya Ranjan" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500" />
-                                            </div>
-                                            <div>
-                                                <label className="block text-xs font-semibold text-slate-700 mb-1">Phone / WhatsApp *</label>
-                                                <input type="tel" required placeholder="+91 9337630692" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500" />
-                                            </div>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div>
-                                                <label className="block text-xs font-semibold text-slate-700 mb-1">Email Address *</label>
-                                                <input type="email" required placeholder="soumyaranjann89@gmail.com" className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500" />
-                                            </div>
-                                            <div>
-                                                <label className="block text-xs font-semibold text-slate-700 mb-1">Service Required *</label>
-                                                <select className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500">
-                                                    <option>Embedded IoT Solution (Bhubaneswar)</option>
-                                                    <option>Electronics Component Sourcing</option>
-                                                    <option>Custom 3D Printing and Design</option>
-                                                    <option>Digital Marketing and Software Solutions</option>
-                                                    <option>College / School Electronics Project</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <label className="block text-xs font-semibold text-slate-700 mb-1">Project Details / Message *</label>
-                                            <textarea rows="4" required placeholder="Describe your specifications, timeline, or requirements..." className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500"></textarea>
-                                        </div>
-
-                                        <motion.button 
-                                            whileHover={{ scale: 1.02 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            type="submit" 
-                                            className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-xl shadow-indigo-600/20"
-                                        >
-                                            <i className="fa-solid fa-paper-plane mr-2"></i> Submit Inquiry
-                                        </motion.button>
-                                    </form>
-                                </motion.div>
-                            </div>
-                        </div>
-                    </section>
+                        </section>
+                    </div>
 
                     {/* Footer */}
                     <footer className="bg-white border-t border-slate-200 text-slate-600 py-12">
@@ -707,11 +709,11 @@
                                 <div>
                                     <h5 className="text-slate-900 font-bold text-sm uppercase tracking-wider mb-4">Quick Links</h5>
                                     <ul className="space-y-2 text-xs">
-                                        <li><a href="/" className="hover:text-indigo-600 transition">Home</a></li>
-                                        <li><a href="#iot-embedded" className="hover:text-indigo-600 transition">Embedded IoT</a></li>
-                                        <li><a href="#components-store" className="hover:text-indigo-600 transition">Components Store</a></li>
-                                        <li><a href="#3d-printing" className="hover:text-indigo-600 transition">Custom 3D Printing</a></li>
-                                        <li><a href="#software-solutions" className="hover:text-indigo-600 transition">Software & Marketing</a></li>
+                                        <li><a href="index.html" className="hover:text-indigo-600 transition">Home</a></li>
+                                        <li><a href="embedded-iot.html" className="hover:text-indigo-600 transition">Embedded IoT</a></li>
+                                        <li><a href="store.html" className="hover:text-indigo-600 transition">Components Store</a></li>
+                                        <li><a href="3d-printing.html" className="hover:text-indigo-600 transition">3D Printing</a></li>
+                                        <li><a href="software-marketing.html" className="hover:text-indigo-600 transition">Software & Marketing</a></li>
                                     </ul>
                                 </div>
 
